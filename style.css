@@ -25,3 +25,28 @@
 .service-grid .reveal:nth-child(6){--reveal-delay:350ms}
 .reveal.is-visible{opacity:1!important;transform:translateY(0)!important}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition-delay:0ms!important}}
+
+.mobile-text-cta{display:none}
+@media(max-width:699px){
+  body{padding-bottom:calc(78px + env(safe-area-inset-bottom))}
+  .mobile-text-cta{position:fixed;left:16px;right:16px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;justify-content:center;min-height:56px;color:var(--white);background:var(--green);border-radius:999px;box-shadow:0 18px 42px rgba(31,122,61,.34);font-weight:950;letter-spacing:.01em;transition:transform 180ms ease,background 180ms ease,box-shadow 180ms ease}
+  .mobile-text-cta:hover,.mobile-text-cta:focus-visible{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 22px 52px rgba(31,122,61,.42)}
+  .mobile-text-cta:active{transform:translateY(1px);box-shadow:0 12px 28px rgba(31,122,61,.32)}
+  .estimate-form{gap:18px;padding:26px 18px}
+  .estimate-form .form-phone{order:1}
+  .estimate-form .form-description{order:2}
+  .estimate-form .form-photos{order:3}
+  .estimate-form .form-name{order:4}
+  .estimate-form .form-email{order:5}
+  .estimate-form .form-submit{order:6}
+  .estimate-form .form-success{order:7}
+  input,textarea{min-height:58px;padding:15px 16px;font-size:16px}
+  textarea{min-height:150px}
+  input[type="file"]{padding-top:16px}
+  .before-after{padding-top:64px;padding-bottom:64px}
+  .before-after .section-head{margin-bottom:22px}
+  .before-after .section-head p{margin-top:10px}
+  .ba-shell{gap:16px}
+  .ba-stage{min-height:430px;border-radius:20px}
+  .ba-copy{margin:0;font-size:1rem}
+}
