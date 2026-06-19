@@ -63,19 +63,39 @@ const hashScrollInterval = window.setInterval(() => {
   }
 }, 250);
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("is-visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.14 },
-);
+const revealElements = [...document.querySelectorAll(".reveal")];
+const revealElement = (el) => {
+  el.classList.add("is-visible");
+  el.style.opacity = "1";
+  el.style.transform = "translateY(0)";
+  if (observer) observer.unobserve(el);
+};
+const revealVisibleElements = () => {
+  const trigger = window.innerHeight * 0.9;
 
-document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+  revealElements.forEach((el) => {
+    if (!el.classList.contains("is-visible") && el.getBoundingClientRect().top < trigger) {
+      revealElement(el);
+    }
+  });
+};
+const observer =
+  "IntersectionObserver" in window
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) revealElement(entry.target);
+          });
+        },
+        { threshold: 0.12, rootMargin: "0px 0px -8% 0px" },
+      )
+    : null;
+
+if (observer) revealElements.forEach((el) => observer.observe(el));
+revealVisibleElements();
+window.addEventListener("load", revealVisibleElements);
+window.addEventListener("scroll", revealVisibleElements, { passive: true });
+window.addEventListener("resize", revealVisibleElements);
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
