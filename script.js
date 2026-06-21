@@ -7,6 +7,8 @@ const baDivider = document.querySelector("#baDivider");
 const baHandle = document.querySelector("#baHandle");
 const form = document.querySelector("#estimateForm");
 const formSuccess = document.querySelector("#formSuccess");
+const formError = document.querySelector("#formError");
+const formSubmit = form.querySelector(".form-submit");
 
 const setScrolled = () => navbar.classList.toggle("is-scrolled", window.scrollY > 12);
 
@@ -97,8 +99,28 @@ window.addEventListener("load", revealVisibleElements);
 window.addEventListener("scroll", revealVisibleElements, { passive: true });
 window.addEventListener("resize", revealVisibleElements);
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
-  formSuccess.classList.add("is-visible");
-  form.reset();
+  formSuccess.classList.remove("is-visible");
+  formError.classList.remove("is-visible");
+  formSubmit.disabled = true;
+  formSubmit.textContent = "Sending...";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { Accept: "application/json" },
+    });
+
+    if (!response.ok) throw new Error("Formspree submission failed");
+
+    form.reset();
+    formSuccess.classList.add("is-visible");
+  } catch (error) {
+    formError.classList.add("is-visible");
+  } finally {
+    formSubmit.disabled = false;
+    formSubmit.textContent = "Submit Estimate Request";
+  }
 });
