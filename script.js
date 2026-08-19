@@ -51,11 +51,18 @@ if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: re
 }
 
 const form = document.querySelector("#estimateForm");
+const estimateDetails = document.querySelector("#estimate-options");
+document.querySelector("[data-open-estimate]")?.addEventListener("click", () => {
+  if (estimateDetails) estimateDetails.open = true;
+  estimateDetails?.scrollIntoView({ behavior: "smooth", block: "start" });
+  setTimeout(() => form?.querySelector("#name")?.focus(), 350);
+});
 form?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const success = form.querySelector("#formSuccess");
   const errorMessage = form.querySelector("#formError");
   const submit = form.querySelector(".form-submit");
+  const submitLabel = submit?.textContent;
   success?.classList.remove("is-visible");
   errorMessage?.classList.remove("is-visible");
   submit.disabled = true;
@@ -69,16 +76,7 @@ form?.addEventListener("submit", async (event) => {
     errorMessage?.classList.add("is-visible");
   } finally {
     submit.disabled = false;
-    submit.textContent = "Submit Estimate Request";
-  }
-});
-
-// Add the verified Google Business Profile review URL here when available.
-const GOOGLE_REVIEWS_URL = "";
-document.querySelectorAll("[data-google-reviews]").forEach((link) => {
-  if (GOOGLE_REVIEWS_URL) {
-    link.href = GOOGLE_REVIEWS_URL;
-    link.hidden = false;
+    submit.textContent = submitLabel;
   }
 });
 
