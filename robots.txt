@@ -1,5 +1,5 @@
 User-agent: *
-Allow: /
+Allow: /cleapathjunk/
 
-Sitemap: https://clearpathjunkremoval.com/sitemap.xml
+Sitemap: https://gageg123-de.github.io/cleapathjunk/sitemap.xml
 

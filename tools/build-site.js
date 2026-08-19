@@ -1,8 +1,13 @@
 const fs = require("fs");
 const path = require("path");
+const {
+  basePath,
+  canonicalOrigin: site,
+  deploymentUrl,
+  withBasePath,
+} = require("./site-config");
 
 const root = path.resolve(__dirname, "..");
-const site = "https://clearpathjunkremoval.com";
 const phone = "318-290-8863";
 const tel = "3182908863";
 const email = "clearpathjunkremoval.la@gmail.com";
@@ -142,6 +147,11 @@ write("blog/index.html",layout({title:"Junk Removal Blog | Clear Path Junk Remov
 
 const urls=["/","/services/",...services.map(s=>`/services/${s.slug}/`),"/service-areas/","/service-areas/alexandria-la/","/service-areas/pineville-la/","/projects/",projectPath,"/blog/",articlePath];
 write("sitemap.xml",`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url=>`  <url><loc>${site}${url}</loc><lastmod>2026-08-17</lastmod></url>`).join("\n")}\n</urlset>\n`);
-write("robots.txt",`User-agent: *\nAllow: /\n\nSitemap: ${site}/sitemap.xml\n`);
+write("robots.txt",`User-agent: *\nAllow: ${basePath}\n\nSitemap: ${deploymentUrl("sitemap.xml")}\n`);
 
-function write(relative, content) { const target=path.join(root,relative); fs.mkdirSync(path.dirname(target),{recursive:true}); fs.writeFileSync(target,content+"\n","utf8"); }
+function write(relative, content) {
+  const target = path.join(root, relative);
+  const output = relative.endsWith(".html") ? withBasePath(content) : content;
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, output + "\n", "utf8");
+}

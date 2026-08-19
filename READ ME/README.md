@@ -32,6 +32,27 @@ node tools/build-site.js
 
 The generated files are committed/deployed as normal static files. Website visitors do not need Node or a build process.
 
+## Deployment base path
+
+Deployment paths are centralized in `tools/site-config.js`. The current defaults are:
+
+- Canonical production origin: `https://clearpathjunkremoval.com`
+- GitHub Pages deployment origin: `https://gageg123-de.github.io`
+- GitHub Pages base path: `/cleapathjunk/`
+
+The build prefixes generated navigation, stylesheet, script, and image URLs with the deployment base path while leaving canonical URLs and sitemap page URLs on the intended production domain.
+
+To build later for the custom domain at the domain root, set the deployment values without editing page templates:
+
+```powershell
+$env:SITE_BASE_PATH = "/"
+$env:SITE_DEPLOYMENT_ORIGIN = "https://clearpathjunkremoval.com"
+node tools/build-site.js
+node tools/validate-site.js
+```
+
+Remove those temporary environment variables or open a new shell before rebuilding for GitHub Pages again.
+
 ## Adding a service page
 
 1. Add a unique service object to the `services` array in `tools/build-site.js`.
