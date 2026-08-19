@@ -1,0 +1,6 @@
+exclude:
+  - tools
+  - READ ME
+  - README.md
+  - AGENTS.md
+  - .gitignore

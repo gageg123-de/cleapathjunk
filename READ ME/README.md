@@ -36,17 +36,20 @@ The generated files are committed/deployed as normal static files. Website visit
 
 Deployment paths are centralized in `tools/site-config.js`. The current defaults are:
 
-- Canonical production origin: `https://clearpathjunkremoval.com`
+- Canonical base: `https://gageg123-de.github.io/cleapathjunk`
 - GitHub Pages deployment origin: `https://gageg123-de.github.io`
 - GitHub Pages base path: `/cleapathjunk/`
 
-The build prefixes generated navigation, stylesheet, script, and image URLs with the deployment base path while leaving canonical URLs and sitemap page URLs on the intended production domain.
+The build prefixes navigation, stylesheet, script, and image URLs with the deployment base path. Canonicals, Open Graph URLs, schema URLs, sitemap entries, and RSS links currently use the live GitHub Pages project URL.
 
-To build later for the custom domain at the domain root, set the deployment values without editing page templates:
+`clearpathjunkremoval.com` currently resolves to an unrelated Kansas City company and must not be used for this Alexandria site's canonicals, sitemap, schema, or verification. Configure a custom domain only after ownership and DNS are confirmed.
+
+To build later for a verified custom domain at the domain root, set all three values without editing page templates:
 
 ```powershell
 $env:SITE_BASE_PATH = "/"
-$env:SITE_DEPLOYMENT_ORIGIN = "https://clearpathjunkremoval.com"
+$env:SITE_DEPLOYMENT_ORIGIN = "https://verified-example-domain.com"
+$env:SITE_CANONICAL_ORIGIN = "https://verified-example-domain.com"
 node tools/build-site.js
 node tools/validate-site.js
 ```
@@ -58,7 +61,7 @@ Remove those temporary environment variables or open a new shell before rebuildi
 1. Add a unique service object to the `services` array in `tools/build-site.js`.
 2. Write a unique title, meta description, H1, introduction, handled-items list, audience list, pricing factors, FAQs, and related-service slugs.
 3. Run the build command.
-4. Add the generated URL to the `urls` sitemap array if the page is not generated from `services`.
+4. Add the route and an accurate `lastmod` date to `tools/public-routes.js`.
 5. Check the page on desktop and mobile and verify all related links.
 
 ## Adding a service-area page
@@ -66,14 +69,14 @@ Remove those temporary environment variables or open a new shell before rebuildi
 1. Add a unique entry to `areaData` in `tools/build-site.js`.
 2. Include genuinely useful local information. Do not create a city-name swap or claim unverified jobs.
 3. Add the location to the service-area index when appropriate.
-4. Run the build command and add the URL to the sitemap list.
+4. Add the route to `tools/public-routes.js`, then run the build and validation commands.
 
 ## Adding a blog article
 
 1. Create a unique article pathname and body in `tools/build-site.js` using the article layout classes.
 2. Include a canonical URL, Open Graph fields, breadcrumbs, `BlogPosting` schema, related services, and a closing estimate CTA.
 3. Add a real article card to `/blog/`; do not create an empty indexed page.
-4. Add the URL to the sitemap and rebuild.
+4. Add the route to `tools/public-routes.js`, add the published article to RSS generation, and rebuild.
 
 Future content ideas are shown only on the blog index as an editorial roadmap. They are not linked to empty pages.
 
@@ -106,7 +109,7 @@ No unverified testimonials or ratings are published. When the verified Google Bu
 
 - Unique, useful title and meta description
 - One descriptive H1
-- Canonical URL on the final production domain
+- Canonical URL on the configured and verified public base
 - Open Graph title, description, URL, type, and image
 - Logical internal links to services, locations, proof, and estimate flow
 - Breadcrumb navigation and `BreadcrumbList` schema on interior pages
@@ -122,7 +125,7 @@ No unverified testimonials or ratings are published. When the verified Google Bu
 - Phone/SMS: `318-290-8863`
 - Email: `clearpathjunkremoval.la@gmail.com`
 - Formspree endpoint: `https://formspree.io/f/xgojwqao`
-- Production URL: `https://clearpathjunkremoval.com`
+- Public URL: `https://gageg123-de.github.io/cleapathjunk/`
 - Google Analytics ID: `G-B9NEK0F2FQ`
 
 Search `tools/build-site.js`, `index.html`, and `script.js` when updating these values.
@@ -134,3 +137,47 @@ The homepage is a concise photo-first path: header, real-job hero, before/after 
 The Alexandria Property Cleanout uses ten verified Cook Ave job photos stored as optimized, metadata-stripped WebP copies in `assets/images/cook-ave/`. The source JPEGs remain untouched in their original storage location and are not published. Five explicit before/after pairs cover the living room, two kitchen views, an additional room, and the covered porch.
 
 The public project name is intentionally privacy-safe. Keep the existing `/projects/alexandria-duplex-cleanout/` slug for URL continuity, but use “Alexandria Property Cleanout” in visible copy, metadata, and schema.
+
+## SEO and indexing infrastructure
+
+The technical indexing package is generated and validated from shared configuration:
+
+- `tools/site-config.js` separates the deployment origin, deployment base path, and canonical base.
+- `tools/public-routes.js` is the authoritative list of public indexable routes and maintained `lastmod` dates.
+- `sitemap.xml` contains only those public routes.
+- `robots.txt` allows the public project path, references the sitemap, and excludes build/documentation paths.
+- `404.html` is a useful `noindex, follow` error page and is intentionally excluded from the sitemap.
+- `feed.xml` is an RSS 2.0 feed containing published blog articles only.
+- `_config.yml` prevents GitHub Pages from publishing build tools and internal repository documentation.
+- `tools/validate-site.js` audits crawlability, orphans, local assets, metadata, canonicals, headings, JSON-LD, Open Graph, Twitter cards, sitemap, RSS, robots, and private-file protections.
+
+A sitemap index is intentionally omitted because the site currently has only 15 indexable URLs. A web manifest and Apple touch icon are also omitted until a suitable square brand icon exists; the existing real logo is declared as the favicon.
+
+### Adding a public page
+
+1. Add a unique canonical path.
+2. Add a unique title and useful meta description.
+3. Add exactly one H1 and a logical heading hierarchy.
+4. Link the page from crawlable navigation or relevant page content.
+5. Add the route and accurate `lastmod` to `tools/public-routes.js`.
+6. Add only schema that matches visible page content.
+7. Verify image alt text and intrinsic dimensions.
+8. Verify all generated links use the configured GitHub Pages base path.
+9. Run `node tools/build-site.js` and `node tools/validate-site.js`.
+
+### Adding a published blog article
+
+Follow the public-page checklist, add `BlogPosting` schema, link the article from `/blog/`, add relevant service/project links, and add the item to RSS generation. Do not generate empty placeholder articles.
+
+### Google Search Console
+
+After deployment:
+
+1. Add the URL-prefix property `https://gageg123-de.github.io/cleapathjunk/` in Google Search Console.
+2. Complete the verification method Google actually provides. If Google supplies an HTML verification file, place that exact file in the repository root so it deploys under `/cleapathjunk/`. If Google supplies a meta tag, add the exact unchanged tag to the shared `layout()` head in `tools/build-site.js`.
+3. Submit `https://gageg123-de.github.io/cleapathjunk/sitemap.xml` in the Sitemaps report.
+4. Inspect the homepage and a representative service, area, project, and blog URL, then request indexing when appropriate.
+
+Do not invent or reuse a verification token. Bing Webmaster Tools verification follows the same rule: preserve the exact supplied file or meta tag and never fabricate one.
+
+GitHub Pages project sites cannot publish a standards-level `robots.txt` at the shared `https://gageg123-de.github.io/robots.txt` origin root from this repository. The project-level file remains useful for a future custom domain and is exposed at `/cleapathjunk/robots.txt`; sitemap discovery is also declared directly in every HTML head. A verified custom domain removes this platform limitation.

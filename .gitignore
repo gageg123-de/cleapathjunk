@@ -1,1 +1,12 @@
-﻿bookkeeping/
+bookkeeping/
+node_modules/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+.DS_Store
+Thumbs.db
+site-indexing-audit/
+gh-*-preview/

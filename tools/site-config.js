@@ -5,14 +5,14 @@ const normalizeBasePath = (value) => {
   return clean ? `/${clean}/` : "/";
 };
 
-const canonicalOrigin = normalizeOrigin(
-  process.env.SITE_CANONICAL_ORIGIN || "https://clearpathjunkremoval.com",
-);
 const deploymentOrigin = normalizeOrigin(
   process.env.SITE_DEPLOYMENT_ORIGIN || "https://gageg123-de.github.io",
 );
 const basePath = normalizeBasePath(
   process.env.SITE_BASE_PATH || "/cleapathjunk/",
+);
+const canonicalOrigin = normalizeOrigin(
+  process.env.SITE_CANONICAL_ORIGIN || `${deploymentOrigin}${basePath}`,
 );
 
 const canonicalUrl = (pathname = "/") =>

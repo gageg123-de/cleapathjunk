@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /cleapathjunk/
+Disallow: /cleapathjunk/tools/
+Disallow: /cleapathjunk/READ%20ME/
+Disallow: /cleapathjunk/README.md
+Disallow: /cleapathjunk/AGENTS.md
 
 Sitemap: https://gageg123-de.github.io/cleapathjunk/sitemap.xml
-
