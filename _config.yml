@@ -1,3 +1,6 @@
+url: "https://clearpathjunkla.com"
+baseurl: ""
+
 exclude:
   - tools
   - READ ME

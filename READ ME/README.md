@@ -32,29 +32,29 @@ node tools/build-site.js
 
 The generated files are committed/deployed as normal static files. Website visitors do not need Node or a build process.
 
-## Deployment base path
+## Production domain and deployment path
 
 Deployment paths are centralized in `tools/site-config.js`. The current defaults are:
 
-- Canonical base: `https://gageg123-de.github.io/cleapathjunk`
-- GitHub Pages deployment origin: `https://gageg123-de.github.io`
-- GitHub Pages base path: `/cleapathjunk/`
+- Canonical base: `https://clearpathjunkla.com`
+- GitHub Pages deployment origin: `https://clearpathjunkla.com`
+- Production base path: `/`
 
-The build prefixes navigation, stylesheet, script, and image URLs with the deployment base path. Canonicals, Open Graph URLs, schema URLs, sitemap entries, and RSS links currently use the live GitHub Pages project URL.
+GitHub Pages hosts the repository, while the custom domain serves it from the domain root. The build keeps navigation, stylesheet, script, and image URLs root-relative. Canonicals, Open Graph URLs, schema URLs, sitemap entries, and RSS links use the verified custom domain.
 
 `clearpathjunkremoval.com` currently resolves to an unrelated Kansas City company and must not be used for this Alexandria site's canonicals, sitemap, schema, or verification. Configure a custom domain only after ownership and DNS are confirmed.
 
-To build later for a verified custom domain at the domain root, set all three values without editing page templates:
+The production values are the defaults. Environment variables remain available for a temporary preview or alternate deployment without editing page templates:
 
 ```powershell
 $env:SITE_BASE_PATH = "/"
-$env:SITE_DEPLOYMENT_ORIGIN = "https://verified-example-domain.com"
-$env:SITE_CANONICAL_ORIGIN = "https://verified-example-domain.com"
+$env:SITE_DEPLOYMENT_ORIGIN = "https://preview.example.com"
+$env:SITE_CANONICAL_ORIGIN = "https://preview.example.com"
 node tools/build-site.js
 node tools/validate-site.js
 ```
 
-Remove those temporary environment variables or open a new shell before rebuilding for GitHub Pages again.
+Remove those temporary environment variables or open a new shell before rebuilding production. The root-level `CNAME` file must remain `clearpathjunkla.com`; do not replace it for local previews.
 
 ## Adding a service page
 
@@ -125,7 +125,7 @@ No unverified testimonials or ratings are published. When the verified Google Bu
 - Phone/SMS: `318-290-8863`
 - Email: `clearpathjunkremoval.la@gmail.com`
 - Formspree endpoint: `https://formspree.io/f/xgojwqao`
-- Public URL: `https://gageg123-de.github.io/cleapathjunk/`
+- Public URL: `https://clearpathjunkla.com/`
 - Google Analytics ID: `G-B9NEK0F2FQ`
 
 Search `tools/build-site.js`, `index.html`, and `script.js` when updating these values.
@@ -145,7 +145,7 @@ The technical indexing package is generated and validated from shared configurat
 - `tools/site-config.js` separates the deployment origin, deployment base path, and canonical base.
 - `tools/public-routes.js` is the authoritative list of public indexable routes and maintained `lastmod` dates.
 - `sitemap.xml` contains only those public routes.
-- `robots.txt` allows the public project path, references the sitemap, and excludes build/documentation paths.
+- `robots.txt` allows the public site root, references the custom-domain sitemap, and excludes build/documentation paths.
 - `404.html` is a useful `noindex, follow` error page and is intentionally excluded from the sitemap.
 - `feed.xml` is an RSS 2.0 feed containing published blog articles only.
 - `_config.yml` prevents GitHub Pages from publishing build tools and internal repository documentation.
@@ -162,7 +162,7 @@ A sitemap index is intentionally omitted because the site currently has only 15 
 5. Add the route and accurate `lastmod` to `tools/public-routes.js`.
 6. Add only schema that matches visible page content.
 7. Verify image alt text and intrinsic dimensions.
-8. Verify all generated links use the configured GitHub Pages base path.
+8. Verify all generated links use the configured production base path.
 9. Run `node tools/build-site.js` and `node tools/validate-site.js`.
 
 ### Adding a published blog article
@@ -173,11 +173,11 @@ Follow the public-page checklist, add `BlogPosting` schema, link the article fro
 
 After deployment:
 
-1. Add the URL-prefix property `https://gageg123-de.github.io/cleapathjunk/` in Google Search Console.
-2. Complete the verification method Google actually provides. If Google supplies an HTML verification file, place that exact file in the repository root so it deploys under `/cleapathjunk/`. If Google supplies a meta tag, add the exact unchanged tag to the shared `layout()` head in `tools/build-site.js`.
-3. Submit `https://gageg123-de.github.io/cleapathjunk/sitemap.xml` in the Sitemaps report.
+1. Add the URL-prefix property `https://clearpathjunkla.com/` in Google Search Console.
+2. Complete the verification method Google actually provides. If Google supplies an HTML verification file, place that exact file in the repository root. If Google supplies a meta tag, add the exact unchanged tag to the shared `layout()` head in `tools/build-site.js`.
+3. Submit `https://clearpathjunkla.com/sitemap.xml` in the Sitemaps report.
 4. Inspect the homepage and a representative service, area, project, and blog URL, then request indexing when appropriate.
 
 Do not invent or reuse a verification token. Bing Webmaster Tools verification follows the same rule: preserve the exact supplied file or meta tag and never fabricate one.
 
-GitHub Pages project sites cannot publish a standards-level `robots.txt` at the shared `https://gageg123-de.github.io/robots.txt` origin root from this repository. The project-level file remains useful for a future custom domain and is exposed at `/cleapathjunk/robots.txt`; sitemap discovery is also declared directly in every HTML head. A verified custom domain removes this platform limitation.
+The verified custom domain serves `robots.txt`, `sitemap.xml`, and all public assets from `/`. GitHub Pages remains the deployment infrastructure, and `CNAME` preserves the domain assignment.

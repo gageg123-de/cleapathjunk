@@ -13,6 +13,6 @@ The generated HTML, `sitemap.xml`, `robots.txt`, `feed.xml`, and `404.html` are 
 
 ## Current public site
 
-`https://gageg123-de.github.io/cleapathjunk/`
+`https://clearpathjunkla.com/`
 
-Canonical and deployment paths are centralized in `tools/site-config.js`. Public indexable routes and maintained `lastmod` dates are centralized in `tools/public-routes.js`.
+GitHub Pages remains the hosting platform, with `CNAME` preserving the custom-domain assignment. Canonical and deployment paths are centralized in `tools/site-config.js`; public indexable routes and maintained `lastmod` dates are centralized in `tools/public-routes.js`.

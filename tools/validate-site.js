@@ -10,6 +10,12 @@ const { publicRoutes } = require("./public-routes");
 const root = path.resolve(__dirname, "..");
 const errors = [];
 const htmlFiles = [];
+const today = new Intl.DateTimeFormat("en-CA", {
+  timeZone: "America/Chicago",
+  year: "numeric",
+  month: "2-digit",
+  day: "2-digit",
+}).format(new Date());
 const publicRouteSet = new Set(publicRoutes.map(({ pathname }) => pathname));
 const expectedFiles = new Map(
   publicRoutes.map(({ pathname }) => [
@@ -86,6 +92,12 @@ const incoming = new Map(publicRoutes.map(({ pathname }) => [pathname, new Set()
 for (const file of htmlFiles) {
   const rel = relative(file);
   const html = fs.readFileSync(file, "utf8");
+  if (html.includes("gageg123-de.github.io") || html.includes("/cleapathjunk/")) {
+    errors.push(`${rel}: legacy GitHub Pages production reference`);
+  }
+  if (/(?:href|src)="\/\/(?!\/)/i.test(html)) {
+    errors.push(`${rel}: protocol-relative path found where a root path is expected`);
+  }
   const route = expectedFiles.get(rel);
   const is404 = rel === "404.html";
 
@@ -221,7 +233,7 @@ for (const { pathname, lastmod } of publicRoutes) {
   if (!url.startsWith("https://")) errors.push(`sitemap.xml: non-HTTPS URL ${url}`);
   if (!sitemapUrls.includes(url)) errors.push(`sitemap.xml: missing ${url}`);
   if (!/^\d{4}-\d{2}-\d{2}$/.test(lastmod)) errors.push(`sitemap.xml: invalid lastmod for ${url}`);
-  if (lastmod > "2026-08-18") errors.push(`sitemap.xml: future lastmod for ${url}`);
+  if (lastmod > today) errors.push(`sitemap.xml: future lastmod for ${url}`);
 }
 if (sitemapUrls.some((url) => url.includes("404"))) errors.push("sitemap.xml: 404 page must be excluded");
 if (sitemapLastmods.length !== publicRoutes.length) errors.push("sitemap.xml: every URL must have a maintainable lastmod");
@@ -240,6 +252,19 @@ if (!feed.includes('<rss version="2.0"')) errors.push("feed.xml: missing RSS 2.0
 const feedItems = [...feed.matchAll(/<item>[\s\S]*?<\/item>/g)];
 if (feedItems.length !== 1) errors.push(`feed.xml: expected one published article, found ${feedItems.length}`);
 if (!feed.includes(canonicalUrl("blog/junk-removal-cost-alexandria-la/"))) errors.push("feed.xml: published article is missing");
+
+for (const [name, content] of [["sitemap.xml", sitemap], ["robots.txt", robots], ["feed.xml", feed]]) {
+  if (content.includes("gageg123-de.github.io") || content.includes("/cleapathjunk/")) {
+    errors.push(`${name}: legacy GitHub Pages production reference`);
+  }
+}
+
+const cnamePath = path.join(root, "CNAME");
+if (!fs.existsSync(cnamePath)) {
+  errors.push("CNAME: missing GitHub Pages custom-domain configuration");
+} else if (fs.readFileSync(cnamePath, "utf8").trim() !== "clearpathjunkla.com") {
+  errors.push("CNAME: expected clearpathjunkla.com");
+}
 
 const gitignore = fs.readFileSync(path.join(root, ".gitignore"), "utf8");
 for (const requiredIgnore of ["bookkeeping/", ".env", ".env.*", "*.pem", "*.key", "*.p12"]) {
