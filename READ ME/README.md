@@ -126,3 +126,11 @@ No unverified testimonials or ratings are published. When the verified Google Bu
 - Google Analytics ID: `G-B9NEK0F2FQ`
 
 Search `tools/build-site.js`, `index.html`, and `script.js` when updating these values.
+
+## Current real-photo presentation
+
+The homepage is a concise photo-first path: header, real-job hero, before/after result, four service categories, three-step process, recent-work proof, trust and pricing summary, estimate form, and footer.
+
+The Alexandria Property Cleanout uses ten verified Cook Ave job photos stored as optimized, metadata-stripped WebP copies in `assets/images/cook-ave/`. The source JPEGs remain untouched in their original storage location and are not published. Five explicit before/after pairs cover the living room, two kitchen views, an additional room, and the covered porch.
+
+The public project name is intentionally privacy-safe. Keep the existing `/projects/alexandria-duplex-cleanout/` slug for URL continuity, but use “Alexandria Property Cleanout” in visible copy, metadata, and schema.

@@ -81,3 +81,17 @@ document.querySelectorAll("[data-google-reviews]").forEach((link) => {
     link.hidden = false;
   }
 });
+
+const stickyTextCta = document.querySelector(".mobile-text-cta");
+const stickyObstructions = document.querySelectorAll(".home-hero, .page-hero, #contact, .footer");
+if (stickyTextCta && stickyObstructions.length && "IntersectionObserver" in window) {
+  const visibleObstructions = new Set();
+  const stickyObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) visibleObstructions.add(entry.target);
+      else visibleObstructions.delete(entry.target);
+    });
+    stickyTextCta.classList.toggle("is-hidden", visibleObstructions.size > 0);
+  }, { threshold: 0.05 });
+  stickyObstructions.forEach((element) => stickyObserver.observe(element));
+}
