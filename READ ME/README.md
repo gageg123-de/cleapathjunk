@@ -151,7 +151,7 @@ The technical indexing package is generated and validated from shared configurat
 - `_config.yml` prevents GitHub Pages from publishing build tools and internal repository documentation.
 - `tools/validate-site.js` audits crawlability, orphans, local assets, metadata, canonicals, headings, JSON-LD, Open Graph, Twitter cards, sitemap, RSS, robots, and private-file protections.
 
-A sitemap index is intentionally omitted because the site currently has only 15 indexable URLs. A web manifest and Apple touch icon are also omitted until a suitable square brand icon exists; the existing real logo is declared as the favicon.
+A sitemap index is intentionally omitted because the site currently has only 16 indexable URLs. A web manifest and Apple touch icon are also omitted until a suitable square brand icon exists; the existing real logo is declared as the favicon.
 
 ### Adding a public page
 

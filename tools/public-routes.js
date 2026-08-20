@@ -14,6 +14,7 @@ const publicRoutes = [
   { pathname: "/projects/alexandria-duplex-cleanout/", lastmod: "2026-08-19" },
   { pathname: "/blog/", lastmod: "2026-08-19" },
   { pathname: "/blog/junk-removal-cost-alexandria-la/", lastmod: "2026-08-19" },
+  { pathname: "/blog/junk-removal-vs-dumpster-rental-alexandria-la/", lastmod: "2026-08-19" },
 ];
 
 module.exports = { publicRoutes };

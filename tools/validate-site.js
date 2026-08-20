@@ -186,7 +186,7 @@ for (const file of htmlFiles) {
     if (route === "/" && !schemaTypes.includes("WebSite")) errors.push(`${rel}: missing WebSite schema`);
     if (route !== "/" && !schemaTypes.includes("BreadcrumbList")) errors.push(`${rel}: missing BreadcrumbList schema`);
     if (route.startsWith("/services/") && route !== "/services/" && !schemaTypes.includes("Service")) errors.push(`${rel}: missing Service schema`);
-    if (route === "/blog/junk-removal-cost-alexandria-la/" && !schemaTypes.includes("BlogPosting")) errors.push(`${rel}: missing BlogPosting schema`);
+    if (route.startsWith("/blog/") && route !== "/blog/" && !schemaTypes.includes("BlogPosting")) errors.push(`${rel}: missing BlogPosting schema`);
     if (route === "/projects/alexandria-duplex-cleanout/" && !schemaTypes.includes("Article")) errors.push(`${rel}: missing Article schema`);
   }
 
@@ -222,6 +222,20 @@ const cssFile = path.join(root, "style.css");
 const css = fs.readFileSync(cssFile, "utf8");
 for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/gi)) checkTarget(cssFile, match[1]);
 
+for (const relativePath of [
+  "assets/images/blog/junk-removal-cost-factors.svg",
+  "assets/images/blog/junk-removal-project-size-guide.svg",
+]) {
+  const svgPath = path.join(root, relativePath);
+  if (!fs.existsSync(svgPath)) {
+    errors.push(`${relativePath}: missing blog graphic`);
+    continue;
+  }
+  const svg = fs.readFileSync(svgPath, "utf8");
+  if (!/<svg\b[^>]*\bviewBox="[^"]+"/i.test(svg)) errors.push(`${relativePath}: missing SVG viewBox`);
+  if (/<script\b|<image\b|(?:xlink:)?href="(?:https?:|data:)/i.test(svg)) errors.push(`${relativePath}: SVG must not contain scripts, raster data, or external dependencies`);
+}
+
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 if (!sitemap.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')) errors.push("sitemap.xml: invalid urlset namespace");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
@@ -250,8 +264,13 @@ for (const publicPath of ["services/", "service-areas/", "projects/", "blog/", "
 const feed = fs.readFileSync(path.join(root, "feed.xml"), "utf8");
 if (!feed.includes('<rss version="2.0"')) errors.push("feed.xml: missing RSS 2.0 root");
 const feedItems = [...feed.matchAll(/<item>[\s\S]*?<\/item>/g)];
-if (feedItems.length !== 1) errors.push(`feed.xml: expected one published article, found ${feedItems.length}`);
-if (!feed.includes(canonicalUrl("blog/junk-removal-cost-alexandria-la/"))) errors.push("feed.xml: published article is missing");
+if (feedItems.length !== 2) errors.push(`feed.xml: expected two published articles, found ${feedItems.length}`);
+for (const articlePath of [
+  "blog/junk-removal-cost-alexandria-la/",
+  "blog/junk-removal-vs-dumpster-rental-alexandria-la/",
+]) {
+  if (!feed.includes(canonicalUrl(articlePath))) errors.push(`feed.xml: published article is missing ${articlePath}`);
+}
 
 for (const [name, content] of [["sitemap.xml", sitemap], ["robots.txt", robots], ["feed.xml", feed]]) {
   if (content.includes("gageg123-de.github.io") || content.includes("/cleapathjunk/")) {
