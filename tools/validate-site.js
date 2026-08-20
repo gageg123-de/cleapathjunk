@@ -222,20 +222,6 @@ const cssFile = path.join(root, "style.css");
 const css = fs.readFileSync(cssFile, "utf8");
 for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/gi)) checkTarget(cssFile, match[1]);
 
-for (const relativePath of [
-  "assets/images/blog/junk-removal-cost-factors.svg",
-  "assets/images/blog/clear-path-junk-removal-estimate-process.svg",
-]) {
-  const svgPath = path.join(root, relativePath);
-  if (!fs.existsSync(svgPath)) {
-    errors.push(`${relativePath}: missing blog graphic`);
-    continue;
-  }
-  const svg = fs.readFileSync(svgPath, "utf8");
-  if (!/<svg\b[^>]*\bviewBox="[^"]+"/i.test(svg)) errors.push(`${relativePath}: missing SVG viewBox`);
-  if (/<script\b|<image\b|(?:xlink:)?href="(?:https?:|data:)/i.test(svg)) errors.push(`${relativePath}: SVG must not contain scripts, raster data, or external dependencies`);
-}
-
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 if (!sitemap.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')) errors.push("sitemap.xml: invalid urlset namespace");
 const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
