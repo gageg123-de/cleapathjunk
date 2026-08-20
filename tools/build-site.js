@@ -303,7 +303,7 @@ function write(relative, content) {
     .replaceAll("Alexandria Duplex Cleanout", "Alexandria Property Cleanout")
     .replaceAll("Alexandria duplex cleanout", "Alexandria property cleanout")
     .replaceAll("recent local duplex project", "recent local property cleanout");
-  const cacheSafeContent = privacySafeContent.replaceAll("/style.css?v=conversion-1", "/style.css?v=blog-mobile-1");
+  const cacheSafeContent = privacySafeContent.replaceAll("/style.css?v=conversion-1", "/style.css?v=layout-width-1");
   const output = relative.endsWith(".html") ? withBasePath(cacheSafeContent) : cacheSafeContent;
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, output.trimEnd() + "\n", "utf8");

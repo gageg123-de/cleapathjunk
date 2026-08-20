@@ -220,6 +220,12 @@ for (const [route, sources] of incoming) {
 
 const cssFile = path.join(root, "style.css");
 const css = fs.readFileSync(cssFile, "utf8");
+if (/\b(?:min|max)\(\s*100%\s*[-+]\s*\d/i.test(css)) {
+  errors.push("style.css: percentage arithmetic inside min()/max() must use calc() so browsers do not discard the declaration");
+}
+if (/\.article-layout\{[^}]*\bwidth:100%/i.test(css)) {
+  errors.push("style.css: article-layout must preserve the shared container gutter instead of overriding it with width:100%");
+}
 for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/gi)) checkTarget(cssFile, match[1]);
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
