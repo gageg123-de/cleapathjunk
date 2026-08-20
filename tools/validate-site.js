@@ -26,7 +26,7 @@ const expectedFiles = new Map(
 
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if ([".git", "node_modules"].includes(entry.name)) continue;
+    if ([".git", "node_modules", "bookkeeping"].includes(entry.name)) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(full);
     else if (entry.name.endsWith(".html")) htmlFiles.push(full);
@@ -256,12 +256,14 @@ for (const publicPath of ["services/", "service-areas/", "projects/", "blog/", "
 const feed = fs.readFileSync(path.join(root, "feed.xml"), "utf8");
 if (!feed.includes('<rss version="2.0"')) errors.push("feed.xml: missing RSS 2.0 root");
 const feedItems = [...feed.matchAll(/<item>[\s\S]*?<\/item>/g)];
-if (feedItems.length !== 2) errors.push(`feed.xml: expected two published articles, found ${feedItems.length}`);
-for (const articlePath of [
-  "blog/junk-removal-cost-alexandria-la/",
-  "blog/junk-removal-vs-dumpster-rental-alexandria-la/",
-]) {
-  if (!feed.includes(canonicalUrl(articlePath))) errors.push(`feed.xml: published article is missing ${articlePath}`);
+const publishedArticlePaths = publicRoutes
+  .map(({ pathname }) => pathname)
+  .filter((pathname) => /^\/blog\/.+\/$/.test(pathname));
+if (feedItems.length !== publishedArticlePaths.length) {
+  errors.push(`feed.xml: expected ${publishedArticlePaths.length} published articles, found ${feedItems.length}`);
+}
+for (const pathname of publishedArticlePaths) {
+  if (!feed.includes(canonicalUrl(pathname))) errors.push(`feed.xml: published article is missing ${pathname}`);
 }
 
 for (const [name, content] of [["sitemap.xml", sitemap], ["robots.txt", robots], ["feed.xml", feed]]) {

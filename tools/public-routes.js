@@ -1,7 +1,7 @@
 const publicRoutes = [
   { pathname: "/", lastmod: "2026-08-19" },
   { pathname: "/services/", lastmod: "2026-08-19" },
-  { pathname: "/services/property-cleanouts/", lastmod: "2026-08-19" },
+  { pathname: "/services/property-cleanouts/", lastmod: "2026-08-20" },
   { pathname: "/services/furniture-removal/", lastmod: "2026-08-19" },
   { pathname: "/services/estate-cleanouts/", lastmod: "2026-08-19" },
   { pathname: "/services/garage-cleanouts/", lastmod: "2026-08-19" },
@@ -12,9 +12,10 @@ const publicRoutes = [
   { pathname: "/service-areas/pineville-la/", lastmod: "2026-08-19" },
   { pathname: "/projects/", lastmod: "2026-08-19" },
   { pathname: "/projects/alexandria-duplex-cleanout/", lastmod: "2026-08-19" },
-  { pathname: "/blog/", lastmod: "2026-08-19" },
-  { pathname: "/blog/junk-removal-cost-alexandria-la/", lastmod: "2026-08-19" },
-  { pathname: "/blog/junk-removal-vs-dumpster-rental-alexandria-la/", lastmod: "2026-08-19" },
+  { pathname: "/blog/", lastmod: "2026-08-20" },
+  { pathname: "/blog/junk-removal-cost-alexandria-la/", lastmod: "2026-08-20" },
+  { pathname: "/blog/junk-removal-vs-dumpster-rental-alexandria-la/", lastmod: "2026-08-20" },
+  { pathname: "/blog/property-cleanout-cost-louisiana/", lastmod: "2026-08-20" },
 ];
 
 module.exports = { publicRoutes };
