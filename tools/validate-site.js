@@ -224,7 +224,7 @@ for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/gi)) checkTarget(cs
 
 for (const relativePath of [
   "assets/images/blog/junk-removal-cost-factors.svg",
-  "assets/images/blog/junk-removal-project-size-guide.svg",
+  "assets/images/blog/clear-path-junk-removal-estimate-process.svg",
 ]) {
   const svgPath = path.join(root, relativePath);
   if (!fs.existsSync(svgPath)) {
