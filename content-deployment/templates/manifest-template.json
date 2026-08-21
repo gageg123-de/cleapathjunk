@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "campaign": "job-slug",
+  "publication_authorized": false,
+  "source_inventory": [],
+  "content_items": [
+    {
+      "id": "",
+      "campaign": "job-slug",
+      "concept": "",
+      "platform": "",
+      "content_type": "",
+      "intent": "",
+      "source_images": [],
+      "processed_image": "",
+      "caption_file": "",
+      "destination_url": "",
+      "alt_text": "",
+      "status": "draft",
+      "priority": "",
+      "notes": ""
+    }
+  ]
+}

@@ -445,6 +445,13 @@ Infographics must be useful, restrained, mobile-readable, brand-consistent, and 
 
 If generated text is garbled, misspelled, or inconsistent, do not ship it. Use deterministic SVG, HTML/CSS, or another method with accurate accessible text. Essential information shown visually must also exist in surrounding HTML or an equivalent accessible description.
 
+## Content Deployment
+
+- Non-public social and content-deployment work is governed by `content-deployment/CONTENT-GUIDE.md`.
+- Keep real job photographs authentic and complete a privacy review before approval.
+- Link each content item to the most relevant existing website page; do not create a new public URL merely to support a social campaign.
+- External publication requires human approval.
+
 ## Technical SEO and Indexing
 
 Every indexable page needs:
