@@ -116,7 +116,7 @@ function alexandriaProject({ pageHero, projectCrumbs, cta }) {
 
   return pageHero(projectCrumbs, "Alexandria Property Cleanout", "A full property cleanout with household debris removed from multiple rooms and the covered porch.", true) + `
   <section class="section project-intro"><div class="container project-intro-grid">
-    <div><p class="eyebrow">The job</p><h2>Room by room, cleared.</h2><p>Clear Path removed household junk and loose debris throughout the property, including interior rooms and the covered porch. The primary cleanout work was completed in one working day.</p></div>
+    <div><p class="eyebrow">The job</p><h2>Room by room, cleared.</h2><p>Clear Path removed household junk and loose debris throughout the property, including interior rooms and the covered porch. The primary cleanout work was completed in one working day.</p><p><a class="learn-more" href="/blog/how-long-does-a-full-house-cleanout-take-louisiana/">Learn what affects a full house cleanout timeline</a></p></div>
     <aside class="project-facts"><span>Full property cleanout</span><span>Alexandria, Louisiana</span><span>Completed in one primary working day</span></aside>
   </div></section>
   <section class="section gray project-gallery"><div class="container">

@@ -112,7 +112,7 @@ function servicePage(service) {
   const enrichedBody = service.slug === "property-cleanouts"
     ? body.replace(
       "</a></p></div><div class=\"content-card\"><h2>Service area</h2>",
-      "</a></p><p><a class=\"learn-more\" href=\"/blog/property-cleanout-cost-louisiana/\">Learn what affects property cleanout cost</a></p><p><a class=\"learn-more\" href=\"/blog/junk-removal-vs-dumpster-rental-alexandria-la/\">Compare junk removal and dumpster rental</a></p></div><div class=\"content-card\"><h2>Service area</h2>",
+      "</a></p><p><a class=\"learn-more\" href=\"/blog/property-cleanout-cost-louisiana/\">Learn what affects property cleanout cost</a></p><p><a class=\"learn-more\" href=\"/blog/how-long-does-a-full-house-cleanout-take-louisiana/\">See what affects a full house cleanout timeline</a></p><p><a class=\"learn-more\" href=\"/blog/junk-removal-vs-dumpster-rental-alexandria-la/\">Compare junk removal and dumpster rental</a></p></div><div class=\"content-card\"><h2>Service area</h2>",
     )
     : body;
   return layout({title:service.title,description:service.description,pathname,current:"Services",body:enrichedBody,schemas:[localBusiness,crumbsSchema(crumbs),schema]});
@@ -307,6 +307,7 @@ const propertyCleanoutCostBody=pageHero(propertyCleanoutCostCrumbs,"How Much Doe
   <h3>Full property cleanout</h3>
   <ul><li>Most or all approved contents of a house</li><li>Heavily accumulated material across several areas</li><li>Interior contents combined with approved garage or exterior material</li></ul>
   <p>Full cleanouts require a complete view of the property, clear keep-and-remove boundaries, access planning, loading labor, and disposal planning. Clear Path's privacy-safe <a href="/projects/alexandria-duplex-cleanout/">Alexandria property cleanout case study</a> shows real multi-room project evidence without publishing the customer, exact address, or price. One project's size or duration should not be treated as a standard quote.</p>
+  <p>Timeline planning matters alongside cost. Review <a href="/blog/how-long-does-a-full-house-cleanout-take-louisiana/">what affects how long a full house cleanout takes</a> before setting expectations for a larger property.</p>
 
   <h2>What about rental property cleanouts?</h2>
   <p>Landlords and property managers often need unwanted contents removed between occupants or before repairs, cleaning, or marketing can begin. A rental cleanout may involve abandoned furniture, mattresses, boxes, bagged debris, appliances, or items spread through the home and exterior areas.</p>
@@ -328,11 +329,97 @@ const propertyCleanoutCostBody=pageHero(propertyCleanoutCostCrumbs,"How Much Doe
   <p>Property cleanout cost follows the real scope of the work. Total volume matters, but so do material type, weight, stairs, carrying distance, loading difficulty, property condition, sorting boundaries, and disposal requirements. A complete set of photos makes the first conversation more useful than a room count or a vague description.</p>
   <p>If you are planning a cleanout in Alexandria or Central Louisiana, text Clear Path photos of every removal area, the property location, and any access concerns for an estimate.</p>
   </article><aside class="content-card article-aside"><h2>Estimate checklist</h2><ul class="plain-list"><li>Every room or removal area</li><li>Bulky and unusually heavy items</li><li>Stairs, gates, and carrying path</li><li>Clear keep-and-remove boundaries</li><li>Property city and access details</li></ul><h3>Related local help</h3><p><a href="/services/property-cleanouts/">Property Cleanouts</a></p><p><a href="/service-areas/alexandria-la/">Alexandria Service Area</a></p><p><a href="/projects/alexandria-duplex-cleanout/">Alexandria Cleanout Project</a></p></aside></div></section>${cta("Planning a property cleanout?")}`;
-const propertyCleanoutCostSchema={"@context":"https://schema.org","@type":"BlogPosting","headline":"How Much Does a Property Cleanout Cost in Louisiana?","description":"Practical guidance on the volume, material, labor, access, property condition, and disposal factors that shape a Louisiana property cleanout estimate.","datePublished":"2026-08-20","dateModified":"2026-08-20","image":canonicalUrl("assets/images/cook-ave/cook-ave-living-room-after.webp"),"author":{"@id":site+"/#business"},"publisher":{"@id":site+"/#business"},"mainEntityOfPage":canonicalUrl(propertyCleanoutCostPath),"inLanguage":"en-US"};
+const propertyCleanoutCostSchema={"@context":"https://schema.org","@type":"BlogPosting","headline":"How Much Does a Property Cleanout Cost in Louisiana?","description":"Practical guidance on the volume, material, labor, access, property condition, and disposal factors that shape a Louisiana property cleanout estimate.","datePublished":"2026-08-20","dateModified":"2026-08-21","image":canonicalUrl("assets/images/cook-ave/cook-ave-living-room-after.webp"),"author":{"@id":site+"/#business"},"publisher":{"@id":site+"/#business"},"mainEntityOfPage":canonicalUrl(propertyCleanoutCostPath),"inLanguage":"en-US"};
 write("blog/property-cleanout-cost-louisiana/index.html",layout({title:"How Much Does a Property Cleanout Cost in Louisiana? | Clear Path",description:"Learn what affects property cleanout costs in Louisiana, including volume, labor, access, debris type, property condition, and disposal requirements.",pathname:propertyCleanoutCostPath,current:"Blog",body:propertyCleanoutCostBody,type:"article",image:"/assets/images/cook-ave/cook-ave-living-room-after.webp",imageAlt:"Cleared living room after a Clear Path property cleanout in Alexandria, Louisiana",schemas:[localBusiness,crumbsSchema(propertyCleanoutCostCrumbs),propertyCleanoutCostSchema]}));
 
-const future=["How Much Does an Estate Cleanout Cost?","What Items Will Junk Removal Companies Take?","How Does Junk Removal Pricing Work?","How Long Does a Full House Cleanout Take?","How to Clean Out a Rental Property After a Tenant Leaves","What Size Dumpster Do I Need for a House Cleanout?"];
-const blogBody=pageHero([["Home","/"],["Blog","/blog/"]],"Clear Path Junk Removal Guides","Straightforward local guidance for planning pickups, property cleanouts, and photo estimates in Alexandria and Central Louisiana.",true)+`<section class="section"><div class="container"><div class="blog-grid"><article class="blog-card"><p class="eyebrow">Property cleanout guide</p><h2>How Much Does a Property Cleanout Cost in Louisiana?</h2><time datetime="2026-08-20">August 20, 2026</time><p>Learn how scope, labor, access, volume, material type, property condition, and disposal requirements shape an estimate.</p><a class="learn-more" href="${propertyCleanoutCostPath}">Read guide</a></article><article class="blog-card"><p class="eyebrow">Cleanup planning</p><h2>Junk Removal vs. Dumpster Rental in Alexandria, LA: Which Is Better?</h2><time datetime="2026-08-19">August 19, 2026</time><p>Compare labor, timing, bulky items, gradual projects, and full property cleanouts before choosing.</p><a class="learn-more" href="${comparisonArticlePath}">Read comparison</a></article><article class="blog-card"><p class="eyebrow">Pricing guide</p><h2>How Much Does Junk Removal Cost in Alexandria, LA?</h2><time datetime="2026-08-17">August 17, 2026</time><p>Understand how volume, item type, weight, accessibility, labor, and disposal requirements shape a quote.</p><a class="learn-more" href="${articlePath}">Read guide</a></article></div></div></section><section class="section gray"><div class="container"><div class="content-card"><p class="eyebrow">Editorial roadmap</p><h2>Topics being developed</h2><p>These are future article ideas, not empty indexed pages.</p><ul class="future-list">${future.map(x=>`<li>${x}</li>`).join("")}</ul></div></div></section>`;
+const fullHouseTimelinePath="/blog/how-long-does-a-full-house-cleanout-take-louisiana/";
+const fullHouseTimelineCrumbs=[["Home","/"],["Blog","/blog/"],["Full House Cleanout Timeline in Louisiana",fullHouseTimelinePath]];
+const fullHouseTimelineBody=pageHero(fullHouseTimelineCrumbs,"How Long Does a Full House Cleanout Take in Louisiana?","The timeline depends mainly on the amount and type of material, access throughout the property, sorting requirements, labor complexity, and disposal logistics.",false,"Published August 21, 2026")+`<section class="section"><div class="container article-layout"><article class="article-body">
+  <p>There is no single honest duration for every full house cleanout in Louisiana. A mostly empty home with a few bulky items is fundamentally different from a heavily loaded property with furniture, boxes, bags, and loose household contents spread across several rooms.</p>
+  <p>The useful question is not simply how large the house is. It is how much approved material must leave, where it is located, how difficult it is to carry and load, whether sorting decisions are finished, and what disposal planning the material requires.</p>
+
+  <h2>The quick answer</h2>
+  <div class="callout"><p><strong>A full house cleanout can vary substantially based on scope.</strong> The main timeline factors are total volume, material type and weight, number of removal areas, stairs and access, sorting boundaries, bulky-item handling, and disposal logistics.</p><p>Complete photos and clear access details help Clear Path understand the job. Larger or unusual properties may require follow-up information before scheduling expectations can be discussed responsibly.</p></div>
+
+  <h2>What determines how long a house cleanout takes?</h2>
+  <p>House cleanouts combine carrying, loading, movement through the property, and hauling. Two homes with the same number of bedrooms can require very different work. The following factors explain why.</p>
+
+  <h3>Amount of material</h3>
+  <p>Volume is the amount of approved material that must be handled and loaded. A few pieces of furniture in otherwise empty rooms present a smaller scope than household contents covering floors, filling closets, or extending into a garage and exterior areas.</p>
+  <p>Wide photos are more useful than item counts because they show both the material and the surrounding space. Include every room or pile in the requested scope so the estimate is not based on one representative corner of the property.</p>
+
+  <h3>Type and weight of items</h3>
+  <p>Furniture, mattresses, appliances, boxes, bags, and loose household contents require different handling. A group of light boxes may involve many trips. A smaller number of heavy pieces may require slower, more careful movement.</p>
+  <p>Unusually dense or heavy material should be identified directly. A photo may show size but not weight. Clear Path's scope must be confirmed before assuming an item fits ordinary household junk-removal service.</p>
+
+  <h3>Property size and number of rooms</h3>
+  <p>More rooms generally create more movement through the property, but room count is not a timing formula. A nearly empty house can contain less work than a smaller property with packed rooms, closets, and storage areas.</p>
+  <p>Detached garages, sheds, covered porches, and exterior piles should be shown separately when they are part of the requested cleanout. Material distributed across several structures or levels requires more carrying and coordination than one consolidated removal area.</p>
+
+  <h3>Stairs, gates, and access</h3>
+  <p>Access affects every trip between the material and the loading area. Stairs, upper floors, narrow doors, tight turns, gates, long carrying distances, limited parking, or a loading position far from the entrance can slow the work.</p>
+  <p>Send photos of stairs, hallways, doors, gates, and the route to the loading area. Mention elevators, building access rules, locked structures, or other arrangements that might not be visible in room photos.</p>
+
+  <h3>Sorting vs. removing everything</h3>
+  <p>A clearly defined removal scope is easier to carry out than a property where decisions are still being made. Customers or authorized representatives should decide what stays and what is approved for removal before or during the agreed process.</p>
+  <p>Clear Path removes approved items. It does not appraise belongings, decide what an estate should keep, give legal advice, or sort private documents. If some items remain, separate or label them clearly so removal boundaries are easy to follow.</p>
+
+  <h3>Bulky or difficult items</h3>
+  <p>Couches, mattresses, dressers, appliances, and other large household items may require more maneuvering than bags or small boxes. Narrow paths, upper floors, awkward shapes, or reasonable disassembly can add handling steps.</p>
+  <p>Show bulky items individually and include the nearby doorway or stair route. Identify anything unusually heavy rather than assuming it can be handled like ordinary furniture.</p>
+
+  <h3>Disposal logistics</h3>
+  <p>Loading is only part of the overall job. Material type, weight, accepted disposal options, and the mix of contents can affect hauling and disposal planning after items leave the property.</p>
+  <p>Do not mix chemicals, fuel, paint, medical waste, unknown containers, or other questionable material into an ordinary household pile. This article does not claim specific Louisiana disposal locations, regulations, fees, or trip counts.</p>
+
+  <h2>Small cleanout vs. full property cleanout</h2>
+  <p>These examples describe scope, not official Clear Path time or pricing tiers.</p>
+  <h3>Smaller cleanout</h3>
+  <ul><li>One room with limited unwanted contents</li><li>A few bulky furniture pieces</li><li>A clearly grouped pile near an accessible exit</li></ul>
+  <p>The removal area is limited, although weight, stairs, or difficult access may still affect the work.</p>
+  <h3>Larger cleanout</h3>
+  <ul><li>Contents across multiple rooms</li><li>A garage combined with interior household items</li><li>A rental turnover with furniture, boxes, and loose debris</li></ul>
+  <p>Material is spread across more of the property, creating additional movement, loading, and coordination.</p>
+  <h3>Full property cleanout</h3>
+  <ul><li>Extensive contents throughout most or all of a house</li><li>A larger mix of furniture, household debris, and miscellaneous items</li><li>Interior material combined with approved garage, porch, or exterior contents</li></ul>
+  <p>A full scope requires clear removal boundaries, complete photos, access planning, labor planning, and disposal review. For the related cost variables, see <a href="/blog/property-cleanout-cost-louisiana/">what affects property cleanout cost in Louisiana</a>.</p>
+
+  <h2>Does a vacant property take less time?</h2>
+  <p>A vacant property can simplify movement and decision-making when the remaining contents are clearly approved for removal. Empty pathways may also make access easier.</p>
+  <p>Vacancy alone does not determine duration. A vacant house can still contain heavy furniture, packed storage areas, loose debris, difficult stairs, or material spread across several buildings. The remaining scope matters more than whether someone currently lives there.</p>
+
+  <h2>What about rental property cleanouts?</h2>
+  <p>Landlords and property managers may need unwanted contents removed between occupants or before repairs, cleaning, or marketing begins. A rental turnover can involve abandoned furniture, mattresses, boxes, appliances, general household debris, and exterior items.</p>
+  <p>Confirm that you have authority to approve removal, identify what stays, provide access details, and communicate any real scheduling constraint. Clear Path handles the physical removal described in the agreed scope; it does not decide ownership of tenant belongings. The <a href="/services/property-cleanouts/">Property Cleanouts service page</a> explains this service for rentals and larger residential properties.</p>
+
+  <h2>What about estate or inherited property cleanouts?</h2>
+  <p>Estate and inherited-property work often involves decisions before hauling begins. Family members, executors, or other authorized representatives may need to identify keepsakes, records, valuables, and belongings that should remain.</p>
+  <p>Clear Path can remove items already approved within the confirmed scope. It does not provide probate services, legal advice, estate appraisal, estate-sale management, hazardous-material service, or remediation. Separating retained belongings before removal helps protect important items and keeps the work clear.</p>
+
+  <h2>A real Alexandria cleanout example</h2>
+  <p>Clear Path's privacy-safe <a href="/projects/alexandria-duplex-cleanout/">Alexandria property cleanout case study</a> documents household debris removed from multiple rooms and a covered porch. The primary cleanout work for that specific property was completed in one working day.</p>
+  <p>That result is evidence from one completed project—not an average, estimate, guarantee, or promise for another house. A different property may involve a different volume, access route, material mix, sorting status, or disposal scope. Customers in the primary market can review the <a href="/service-areas/alexandria-la/">Alexandria service-area page</a> for additional local service context.</p>
+
+  <h2>Junk removal vs. dumpster rental for a full house cleanout</h2>
+  <p>With full-service junk removal, the agreed carrying, loading, and hauling are handled as part of the service. With a dumpster rental, the customer typically loads accepted material into a container over the rental period.</p>
+  <p>Junk removal may fit a defined scope when labor and coordinated removal are important. A dumpster may fit a gradual project when the customer wants to load over several days. Neither option is automatically faster or cheaper. Compare the responsibilities in the full guide to <a href="/blog/junk-removal-vs-dumpster-rental-alexandria-la/">junk removal versus dumpster rental in Alexandria</a>.</p>
+
+  <h2>How to help a property cleanout go faster</h2>
+  <ol><li><strong>Decide what stays and what goes.</strong> Separate or clearly identify retained belongings before removal begins.</li><li><strong>Show all major areas in photos.</strong> Include every room, garage, porch, or exterior pile in the requested scope.</li><li><strong>Mention access issues.</strong> Explain stairs, gates, long carrying distances, upper floors, parking limits, or coordinated entry.</li><li><strong>Identify unusually heavy items.</strong> Show them separately and describe anything a photo cannot communicate.</li><li><strong>Keep access routes clear where practical.</strong> Do not create unsafe lifting or preparation work; simply avoid adding preventable obstacles when possible.</li><li><strong>Provide the property location.</strong> Share the city initially and the address privately when arranging service.</li><li><strong>Communicate scheduling constraints.</strong> Explain a real turnover, closing, or access deadline without assuming a guaranteed completion date.</li></ol>
+
+  <h2>How Clear Path estimates the scope</h2>
+  <p>Start with wide photos of each removal area, close photos of bulky or unusual items, the property location, and details about stairs or access. Clear Path can review that information and determine the next step.</p>
+  <p>Photos create a useful starting point, but they do not guarantee that every large or unusual job can receive a final quote without follow-up. Hidden material, unclear sorting boundaries, weight, or access details may require more information. For broader pricing context, read <a href="/blog/junk-removal-cost-alexandria-la/">how junk removal pricing works in Alexandria</a>.</p>
+
+  <h2>Bottom line</h2>
+  <p>A full house cleanout timeline depends on the actual scope—not merely the house size. Volume, material type, weight, number of rooms, stairs, carrying distance, sorting decisions, bulky items, and disposal logistics all matter.</p>
+  <p>Need a property cleared out in Alexandria or Central Louisiana? Send Clear Path photos of what needs to go, the property location, and any access concerns for an estimate.</p>
+  </article><aside class="content-card article-aside"><h2>Timeline checklist</h2><ul class="plain-list"><li>Total removal areas</li><li>Volume and material type</li><li>Bulky or unusually heavy items</li><li>Stairs, gates, and carrying distance</li><li>Keep-and-remove decisions</li><li>Disposal requirements</li></ul><h3>Related local help</h3><p><a href="/services/property-cleanouts/">Property Cleanouts</a></p><p><a href="/blog/property-cleanout-cost-louisiana/">Property Cleanout Cost Guide</a></p><p><a href="/projects/alexandria-duplex-cleanout/">Alexandria Cleanout Project</a></p></aside></div></section>${cta("Need a property cleared out?")}`;
+const fullHouseTimelineSchema={"@context":"https://schema.org","@type":"BlogPosting","headline":"How Long Does a Full House Cleanout Take in Louisiana?","description":"Practical guidance on the scope, material, access, sorting, labor, and disposal factors that affect a Louisiana full house cleanout timeline.","datePublished":"2026-08-21","dateModified":"2026-08-21","image":canonicalUrl("assets/images/cook-ave/cook-ave-living-room-after.webp"),"author":{"@id":site+"/#business"},"publisher":{"@id":site+"/#business"},"mainEntityOfPage":canonicalUrl(fullHouseTimelinePath),"inLanguage":"en-US"};
+write("blog/how-long-does-a-full-house-cleanout-take-louisiana/index.html",layout({title:"How Long Does a Full House Cleanout Take in Louisiana? | Clear Path",description:"Learn what affects how long a full house cleanout takes in Louisiana, including volume, access, bulky items, sorting, labor, and disposal needs.",pathname:fullHouseTimelinePath,current:"Blog",body:fullHouseTimelineBody,type:"article",image:"/assets/images/cook-ave/cook-ave-living-room-after.webp",imageAlt:"Cleared living room after a full property cleanout in Alexandria, Louisiana",schemas:[localBusiness,crumbsSchema(fullHouseTimelineCrumbs),fullHouseTimelineSchema]}));
+
+const future=["How Much Does an Estate Cleanout Cost?","What Items Will Junk Removal Companies Take?","How Does Junk Removal Pricing Work?","How to Clean Out a Rental Property After a Tenant Leaves","What Size Dumpster Do I Need for a House Cleanout?"];
+const blogBody=pageHero([["Home","/"],["Blog","/blog/"]],"Clear Path Junk Removal Guides","Straightforward local guidance for planning pickups, property cleanouts, and photo estimates in Alexandria and Central Louisiana.",true)+`<section class="section"><div class="container"><div class="blog-grid"><article class="blog-card"><p class="eyebrow">Property cleanout guide</p><h2>How Long Does a Full House Cleanout Take in Louisiana?</h2><time datetime="2026-08-21">August 21, 2026</time><p>Learn how volume, access, bulky items, sorting, labor, and disposal logistics affect a full house cleanout timeline.</p><a class="learn-more" href="${fullHouseTimelinePath}">Read guide</a></article><article class="blog-card"><p class="eyebrow">Property cleanout guide</p><h2>How Much Does a Property Cleanout Cost in Louisiana?</h2><time datetime="2026-08-20">August 20, 2026</time><p>Learn how scope, labor, access, volume, material type, property condition, and disposal requirements shape an estimate.</p><a class="learn-more" href="${propertyCleanoutCostPath}">Read guide</a></article><article class="blog-card"><p class="eyebrow">Cleanup planning</p><h2>Junk Removal vs. Dumpster Rental in Alexandria, LA: Which Is Better?</h2><time datetime="2026-08-19">August 19, 2026</time><p>Compare labor, timing, bulky items, gradual projects, and full property cleanouts before choosing.</p><a class="learn-more" href="${comparisonArticlePath}">Read comparison</a></article><article class="blog-card"><p class="eyebrow">Pricing guide</p><h2>How Much Does Junk Removal Cost in Alexandria, LA?</h2><time datetime="2026-08-17">August 17, 2026</time><p>Understand how volume, item type, weight, accessibility, labor, and disposal requirements shape a quote.</p><a class="learn-more" href="${articlePath}">Read guide</a></article></div></div></section><section class="section gray"><div class="container"><div class="content-card"><p class="eyebrow">Editorial roadmap</p><h2>Topics being developed</h2><p>These are future article ideas, not empty indexed pages.</p><ul class="future-list">${future.map(x=>`<li>${x}</li>`).join("")}</ul></div></div></section>`;
 write("blog/index.html",layout({title:"Junk Removal Blog | Clear Path Junk Removal",description:"Clear Path guides for junk-removal pricing, property cleanouts, furniture removal, and planning local service in Alexandria, Louisiana.",pathname:"/blog/",current:"Blog",body:blogBody,schemas:[localBusiness,crumbsSchema([["Home","/"],["Blog","/blog/"]])]}));
 
 const notFoundBody=`<section class="page-hero"><div class="container"><p class="eyebrow">404 error</p><h1>That page could not be found.</h1><p class="lead">The link may be outdated or the page may have moved.</p><h2>Helpful links</h2><div class="button-row"><a class="btn btn-primary" href="/">Return Home</a><a class="btn btn-secondary" href="/services/">View Services</a><a class="btn btn-secondary" href="${sms}">Text Photos For Quote</a></div></div></section>`;
@@ -345,8 +432,15 @@ write("feed.xml",`<?xml version="1.0" encoding="UTF-8"?>
     <link>${canonicalUrl("blog/")}</link>
     <description>Published Clear Path guides for junk removal and property cleanouts in Central Louisiana.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 20 Aug 2026 12:00:00 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 12:00:00 GMT</lastBuildDate>
     <atom:link href="${canonicalUrl("feed.xml")}" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How Long Does a Full House Cleanout Take in Louisiana?</title>
+      <link>${canonicalUrl("blog/how-long-does-a-full-house-cleanout-take-louisiana/")}</link>
+      <guid isPermaLink="true">${canonicalUrl("blog/how-long-does-a-full-house-cleanout-take-louisiana/")}</guid>
+      <pubDate>Fri, 21 Aug 2026 12:00:00 GMT</pubDate>
+      <description>Learn how volume, access, bulky items, sorting, labor, and disposal logistics affect a full house cleanout timeline in Louisiana.</description>
+    </item>
     <item>
       <title>How Much Does a Property Cleanout Cost in Louisiana?</title>
       <link>${canonicalUrl("blog/property-cleanout-cost-louisiana/")}</link>
