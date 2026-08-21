@@ -17,6 +17,7 @@ const publicRoutes = [
   { pathname: "/blog/junk-removal-vs-dumpster-rental-alexandria-la/", lastmod: "2026-08-20" },
   { pathname: "/blog/property-cleanout-cost-louisiana/", lastmod: "2026-08-21" },
   { pathname: "/blog/how-long-does-a-full-house-cleanout-take-louisiana/", lastmod: "2026-08-21" },
+  { pathname: "/blog/how-to-clean-out-rental-property-after-tenant-moves-out/", lastmod: "2026-08-21" },
 ];
 
 module.exports = { publicRoutes };

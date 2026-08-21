@@ -403,6 +403,95 @@ Every article should have:
 
 Do not target arbitrary word counts. Answer the question fully, then stop. Do not bury the answer behind a generic introduction.
 
+### Article Production Standard
+
+Apply this workflow to every proposed article. The purpose is to publish a small body of distinct, useful local guidance—not to increase URL count or publishing velocity.
+
+#### Before drafting
+
+1. Inventory the current Blog index, published articles, relevant service and area pages, and real project evidence.
+2. Define one primary user/search intent in plain language.
+3. Compare that intent semantically with existing content. A different keyword, title, or slug does not establish a distinct purpose.
+4. Prefer improving an existing strong URL when the proposed topic substantially overlaps it. Reject thin keyword variants and doorway-like local pages.
+5. Define the legitimate commercial/service connection, useful internal-link targets, and the appropriate next action.
+6. Confirm Clear Path has a credible reason to address the subject through its services, process, or verified experience.
+7. Identify claims that require current external verification, especially legal, regulatory, safety, pricing, statistical, or disposal claims.
+8. Do not draft when the topic cannot provide meaningfully distinct value.
+
+Record the duplicate/cannibalization decision before creating a new route.
+
+#### Drafting
+
+Articles must:
+
+- Answer or frame the primary question within the opening screen or two.
+- Use one H1 and a logical H2/H3 hierarchy based on real reader questions.
+- Prioritize actionable information, short mobile-readable paragraphs, and supported examples.
+- Distinguish general guidance from verified Clear Path-specific facts.
+- Use Alexandria, Louisiana, and Central Louisiana only where naturally useful.
+- Link to the relevant service, related guides, authentic project proof, service-area context, and estimate path without turning paragraphs into link exchanges.
+- End with a CTA proportionate to the intent.
+- Stop when the user intent is sufficiently answered; never pad to an arbitrary word count.
+
+Avoid repeated templated introductions, keyword stuffing, filler transitions, unsupported superlatives, fake urgency, and mass-produced phrasing. Do not publish content merely because a roadmap item exists.
+
+#### Factual and source standards
+
+Never invent statistics, averages, prices, timelines, laws, regulations, competitor claims, guarantees, credentials, or business policies.
+
+For legal, regulatory, safety, health, or other changing claims, use current authoritative first-party sources when precise facts are necessary. When reliable sourcing is unavailable or precision is outside Clear Path's role, stay appropriately general, state the service boundary, and recommend verification rather than improvising advice. External research must not be used to manufacture local experience.
+
+#### Post-draft quality gate
+
+Before publication, answer:
+
+1. Does the opening satisfy or clearly frame the query?
+2. Is the intent materially distinct from every existing page?
+3. Would another generic article materially add information, or is this answer sufficient?
+4. Can any repetitive section or sentence be removed without losing value?
+5. Is every factual claim supported or appropriately qualified?
+6. Are internal links contextual, descriptive, and useful?
+7. Does the content demonstrate legitimate business relevance rather than claimed expertise?
+8. Is the CTA appropriate and non-pushy?
+9. Is the article comfortable to read at all benchmark mobile widths?
+10. Does the generated page pass the full technical validator?
+
+Article quality is judged by whether it sufficiently satisfies the user intent, not by length. Do not expand a complete article merely to make it longer, and do not publish thin content merely to make the site larger.
+
+#### Discoverability gate
+
+Every published article must have:
+
+- A crawlable Blog index card and at least one useful contextual inbound link where practical.
+- Contextual outbound links to the relevant service/content cluster and estimate path.
+- A unique title, useful meta description, one H1, indexable robots behavior, and production-domain canonical.
+- Open Graph and applicable Twitter metadata consistent with the page.
+- Truthful `BlogPosting` or `Article` schema plus `BreadcrumbList` schema.
+- A centralized public-route/sitemap entry with an accurate maintained `lastmod`.
+- One non-duplicated RSS item when it is a published blog post.
+- Valid mobile geometry, crawlable HTML links, and no orphan status.
+
+Structured data and metadata aid understanding and presentation; they do not guarantee rankings. Never manipulate freshness dates or add schema that is not supported by visible content.
+
+#### Google-oriented content principle
+
+Use current official Google Search documentation when a task requests a contemporary SEO audit. Permanent strategy favors people-first usefulness, legitimate firsthand business relevance, crawlable navigation, accurate metadata, honest structured data, canonical consistency, and a clear site purpose.
+
+Avoid scaled low-value content, doorway pages, keyword stuffing, search-engine-first filler, fake expertise, arbitrary publishing frequency, magical keyword-density rules, and minor keyword variants of existing pages. Google does not prescribe a preferred article word count; sufficiency and usefulness control the stopping point.
+
+#### Required article completion report
+
+For every future published article, report:
+
+- Primary search intent and duplicate-topic preflight result
+- Final word count
+- Outbound internal links and contextual inbound links added
+- Blog index and roadmap changes
+- Schema, sitemap, RSS, canonical, and robots status
+- Mobile benchmark and validator results
+- Unsupported claims intentionally omitted or qualified
+- Commit, push, and live production verification when requested
+
 ### Internal linking
 
 No important public page may be orphaned. Use crawlable `<a href>` links rather than JavaScript-only navigation.

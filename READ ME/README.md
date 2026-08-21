@@ -19,6 +19,10 @@ Dependency-free static website for Clear Path Junk Removal. The generated HTML c
 - `/projects/alexandria-duplex-cleanout/`
 - `/blog/` — article index and editorial roadmap
 - `/blog/junk-removal-cost-alexandria-la/`
+- `/blog/junk-removal-vs-dumpster-rental-alexandria-la/`
+- `/blog/property-cleanout-cost-louisiana/`
+- `/blog/how-long-does-a-full-house-cleanout-take-louisiana/`
+- `/blog/how-to-clean-out-rental-property-after-tenant-moves-out/`
 
 Shared design and behavior live in `style.css` and `script.js`. `tools/build-site.js` contains the reusable page templates and content data used to generate the static HTML files.
 
@@ -151,7 +155,7 @@ The technical indexing package is generated and validated from shared configurat
 - `_config.yml` prevents GitHub Pages from publishing build tools and internal repository documentation.
 - `tools/validate-site.js` audits crawlability, orphans, local assets, metadata, canonicals, headings, JSON-LD, Open Graph, Twitter cards, sitemap, RSS, robots, and private-file protections.
 
-A sitemap index is intentionally omitted because the site currently has only 16 indexable URLs. A web manifest and Apple touch icon are also omitted until a suitable square brand icon exists; the existing real logo is declared as the favicon.
+A sitemap index is intentionally omitted because the site remains small enough for one sitemap. A web manifest and Apple touch icon are also omitted until a suitable square brand icon exists; the existing real logo is declared as the favicon.
 
 ### Adding a public page
 
