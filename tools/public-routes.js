@@ -1,9 +1,9 @@
 const publicRoutes = [
   { pathname: "/", lastmod: "2026-08-19" },
   { pathname: "/services/", lastmod: "2026-08-22" },
-  { pathname: "/services/property-cleanouts/", lastmod: "2026-08-22" },
+  { pathname: "/services/property-cleanouts/", lastmod: "2026-08-23" },
   { pathname: "/services/furniture-removal/", lastmod: "2026-08-22" },
-  { pathname: "/services/estate-cleanouts/", lastmod: "2026-08-19" },
+  { pathname: "/services/estate-cleanouts/", lastmod: "2026-08-23" },
   { pathname: "/services/garage-cleanouts/", lastmod: "2026-08-19" },
   { pathname: "/services/appliance-removal/", lastmod: "2026-08-19" },
   { pathname: "/services/yard-debris-removal/", lastmod: "2026-08-19" },
@@ -12,13 +12,14 @@ const publicRoutes = [
   { pathname: "/service-areas/pineville-la/", lastmod: "2026-08-19" },
   { pathname: "/projects/", lastmod: "2026-08-19" },
   { pathname: "/projects/alexandria-duplex-cleanout/", lastmod: "2026-08-21" },
-  { pathname: "/blog/", lastmod: "2026-08-22" },
+  { pathname: "/blog/", lastmod: "2026-08-23" },
   { pathname: "/blog/junk-removal-cost-alexandria-la/", lastmod: "2026-08-22" },
   { pathname: "/blog/junk-removal-vs-dumpster-rental-alexandria-la/", lastmod: "2026-08-20" },
-  { pathname: "/blog/property-cleanout-cost-louisiana/", lastmod: "2026-08-21" },
-  { pathname: "/blog/how-long-does-a-full-house-cleanout-take-louisiana/", lastmod: "2026-08-21" },
+  { pathname: "/blog/property-cleanout-cost-louisiana/", lastmod: "2026-08-23" },
+  { pathname: "/blog/how-long-does-a-full-house-cleanout-take-louisiana/", lastmod: "2026-08-23" },
   { pathname: "/blog/how-to-clean-out-rental-property-after-tenant-moves-out/", lastmod: "2026-08-21" },
   { pathname: "/blog/what-items-will-junk-removal-companies-take-alexandria-la/", lastmod: "2026-08-22" },
+  { pathname: "/blog/estate-cleanout-cost-louisiana/", lastmod: "2026-08-23" },
 ];
 
 module.exports = { publicRoutes };
