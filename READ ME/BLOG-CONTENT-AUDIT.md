@@ -1,22 +1,22 @@
 # Clear Path Blog Content and Discoverability Audit
 
-Audit date: August 23, 2026
+Audit date: August 24, 2026
 
 Production origin: `https://clearpathjunkla.com/`
 
-Scope: Every published Clear Path blog article after publication of the estate-cleanout cost guide.
+Scope: Every published Clear Path blog article after publication of the large-item removal guide.
 
 This is internal repository documentation. `READ ME/` is excluded from GitHub Pages by `_config.yml`; this file is not a public route and must not be added to the sitemap or RSS feed.
 
 ## Overall assessment
 
-Clear Path has seven published articles organized around three connected clusters:
+Clear Path has eight published articles organized around three connected clusters:
 
 1. **Pricing and cleanup decisions** — general junk-removal cost, property-cleanout cost, estate-cleanout cost, and junk removal versus dumpster rental.
 2. **Property-cleanout planning** — full-house cleanout timeline and post-tenancy rental cleanout preparation.
-3. **Service-scope decisions** — the ordinary item categories Clear Path publicly advertises, the factors that require individual review, and the boundary around hazardous or disposal-sensitive material.
+3. **Service-scope and removal decisions** — accepted-item categories, practical large-item removal options, individual-review factors, and the boundary around hazardous or disposal-sensitive material.
 
-The current articles are sufficiently useful, discoverable, distinct, and technically optimized to remain largely intact. No existing article needs substantive rewriting. The estate guide adds an inherited-property decision layer focused on authorization, sorting status, and defining the approved removal scope; it does not duplicate the general property-cleanout pricing guide.
+The current articles are sufficiently useful, discoverable, distinct, and technically optimized to remain largely intact. No existing article needs substantive rewriting. The large-item guide adds an option-selection layer: it helps Alexandria readers choose among full-service removal, verified local collection where available, reuse, dumpster rental, and specialized handling. It does not duplicate the accepted-items guide's category/eligibility intent.
 
 Strengths:
 
@@ -45,6 +45,7 @@ No material cannibalization was found.
 - `/blog/junk-removal-cost-alexandria-la/` addresses broader local junk-removal pricing, including the approved public starting points.
 - `/blog/what-items-will-junk-removal-companies-take-alexandria-la/` answers whether a specific item may fit ordinary junk removal and clearly separates general categories from verified Clear Path service claims.
 - `/blog/estate-cleanout-cost-louisiana/` answers how estate-specific authorization, keep/remove decisions, sorting status, and inherited-property scope affect a removal estimate.
+- `/blog/how-to-get-rid-of-large-items-alexandria-la/` answers which practical removal or disposal option may fit a known couch, mattress, appliance, furniture piece, or other bulky household item.
 
 The subject cluster overlaps naturally, but the pages answer different questions. Their internal links should help a reader move between price, time, process, proof, and service rather than compete through duplicated copy.
 
@@ -52,17 +53,18 @@ The subject cluster overlaps naturally, but the pages answer different questions
 
 | Article | Published / updated | Approx. words | Primary intent and likely query | Audience | Commercial connection | Geographic relevance |
 | --- | --- | ---: | --- | --- | --- | --- |
-| [How Much Does Junk Removal Cost in Alexandria, LA?](https://clearpathjunkla.com/blog/junk-removal-cost-alexandria-la/) | Aug. 17 / Aug. 20, 2026 | 559 | Understand local junk-removal starting points and estimate factors; “junk removal cost Alexandria LA” | Homeowners and customers planning pickups | General junk removal, furniture, appliances, cleanouts | Alexandria and Central Louisiana |
-| [Junk Removal vs. Dumpster Rental in Alexandria, LA](https://clearpathjunkla.com/blog/junk-removal-vs-dumpster-rental-alexandria-la/) | Aug. 19 / Aug. 20, 2026 | 1,347 | Compare labor, pace, placement, and responsibility; “junk removal vs dumpster rental Alexandria LA” | DIY customers, homeowners, landlords, renovators | Property cleanouts and furniture removal | Alexandria with Central Louisiana service context |
-| [How Much Does a Property Cleanout Cost in Louisiana?](https://clearpathjunkla.com/blog/property-cleanout-cost-louisiana/) | Aug. 20 / Aug. 21, 2026 | 1,430 | Understand variables that shape a property-cleanout estimate | Owners, landlords, managers, realtors, families, executors | Property Cleanouts | Louisiana, with Alexandria/Central Louisiana emphasis |
-| [How Long Does a Full House Cleanout Take in Louisiana?](https://clearpathjunkla.com/blog/how-long-does-a-full-house-cleanout-take-louisiana/) | Aug. 21, 2026 | 1,559 | Understand variables that make a full-house cleanout faster or slower | Owners, landlords, managers, investors, families | Property Cleanouts | Louisiana, with qualified Alexandria project evidence |
-| [How to Clean Out a Rental Property After a Tenant Moves Out](https://clearpathjunkla.com/blog/how-to-clean-out-rental-property-after-tenant-moves-out/) | Aug. 21, 2026 | 1,278 | Plan documentation, authorized removal scope, access, and hauling after a tenant move-out | Landlords, property managers, investors, realtors, property owners | Property Cleanouts and Furniture Removal | Alexandria and Central Louisiana within a general rental-turnover process |
-| [What Items Will Junk Removal Companies Take in Alexandria, LA?](https://clearpathjunkla.com/blog/what-items-will-junk-removal-companies-take-alexandria-la/) | Aug. 22, 2026 | 1,414 | Determine whether specific items may fit ordinary junk removal before requesting a quote | Homeowners, renters, landlords, managers, families, and businesses with unwanted items | Furniture, Appliance, Garage, Yard Debris, and Property Cleanouts | Alexandria and Central Louisiana |
+| [How Much Does Junk Removal Cost in Alexandria, LA?](https://clearpathjunkla.com/blog/junk-removal-cost-alexandria-la/) | Aug. 17 / Aug. 24, 2026 | 598 | Understand local junk-removal starting points and estimate factors; “junk removal cost Alexandria LA” | Homeowners and customers planning pickups | General junk removal, furniture, appliances, cleanouts | Alexandria and Central Louisiana |
+| [Junk Removal vs. Dumpster Rental in Alexandria, LA](https://clearpathjunkla.com/blog/junk-removal-vs-dumpster-rental-alexandria-la/) | Aug. 19 / Aug. 20, 2026 | 1,348 | Compare labor, pace, placement, and responsibility; “junk removal vs dumpster rental Alexandria LA” | DIY customers, homeowners, landlords, renovators | Property cleanouts and furniture removal | Alexandria with Central Louisiana service context |
+| [How Much Does a Property Cleanout Cost in Louisiana?](https://clearpathjunkla.com/blog/property-cleanout-cost-louisiana/) | Aug. 20 / Aug. 23, 2026 | 1,441 | Understand variables that shape a property-cleanout estimate | Owners, landlords, managers, realtors, families, executors | Property Cleanouts | Louisiana, with Alexandria/Central Louisiana emphasis |
+| [How Long Does a Full House Cleanout Take in Louisiana?](https://clearpathjunkla.com/blog/how-long-does-a-full-house-cleanout-take-louisiana/) | Aug. 21 / Aug. 23, 2026 | 1,572 | Understand variables that make a full-house cleanout faster or slower | Owners, landlords, managers, investors, families | Property Cleanouts | Louisiana, with qualified Alexandria project evidence |
+| [How to Clean Out a Rental Property After a Tenant Moves Out](https://clearpathjunkla.com/blog/how-to-clean-out-rental-property-after-tenant-moves-out/) | Aug. 21, 2026 | 1,276 | Plan documentation, authorized removal scope, access, and hauling after a tenant move-out | Landlords, property managers, investors, realtors, property owners | Property Cleanouts and Furniture Removal | Alexandria and Central Louisiana within a general rental-turnover process |
+| [What Items Will Junk Removal Companies Take in Alexandria, LA?](https://clearpathjunkla.com/blog/what-items-will-junk-removal-companies-take-alexandria-la/) | Aug. 22 / Aug. 24, 2026 | 1,437 | Determine whether specific items may fit ordinary junk removal before requesting a quote | Homeowners, renters, landlords, managers, families, and businesses with unwanted items | Furniture, Appliance, Garage, Yard Debris, and Property Cleanouts | Alexandria and Central Louisiana |
 | [How Much Does an Estate Cleanout Cost in Louisiana?](https://clearpathjunkla.com/blog/estate-cleanout-cost-louisiana/) | Aug. 23, 2026 | 1,634 | Understand how approved scope, decision readiness, sorting, access, and material affect an inherited-property removal estimate | Families, executors, heirs, owners, realtors, investors, and property managers | Estate Cleanouts and Property Cleanouts | Louisiana, with Alexandria/Central Louisiana emphasis |
+| [How to Get Rid of Large Items in Alexandria, LA](https://clearpathjunkla.com/blog/how-to-get-rid-of-large-items-alexandria-la/) | Aug. 24, 2026 | 1,590 | Choose a practical removal/disposal option for a known large household item; informed by the early GSC query signal “how to dispose of large items alexandria la” | Homeowners, renters, landlords, managers, realtors, investors, and families | Furniture Removal, Appliance Removal, and Property Cleanouts | Alexandria with Central Louisiana service context |
 
 ## Metadata and discovery inventory
 
-All seven articles have unique metadata. Titles below are the actual `<title>` values; descriptions are the actual meta descriptions.
+All eight articles have unique metadata. Titles below are the actual `<title>` values; descriptions are the actual meta descriptions.
 
 | Article | Meta title | Meta description |
 | --- | --- | --- |
@@ -73,16 +75,18 @@ All seven articles have unique metadata. Titles below are the actual `<title>` v
 | Rental turnover | `Rental Property Cleanout After a Tenant Moves Out \| Clear Path` | A practical rental property cleanout guide covering documentation, removal scope, access, bulky items, hauling, and estimate preparation. |
 | Accepted items | `What Junk Removal Companies Take in Alexandria, LA \| Clear Path` | Learn which household junk, furniture, appliances, cleanout contents, and yard debris may fit junk removal in Alexandria, LA—and what needs review. |
 | Estate-cleanout cost | `How Much Does an Estate Cleanout Cost in Louisiana? \| Clear Path` | Learn what affects estate cleanout cost in Louisiana, including approved scope, sorting, volume, access, labor, material, and disposal requirements. |
+| Large-item options | `How to Get Rid of Large Items in Alexandria, LA \| Clear Path` | Learn your options for getting rid of couches, mattresses, appliances, furniture, and other bulky items in Alexandria, Louisiana. |
 
 | Article | Contextual inbound links | Article-body outbound links | Canonical | Schema | Sitemap | RSS | Indexable |
 | --- | ---: | ---: | --- | --- | --- | --- | --- |
-| Junk-removal cost | 10 | 3 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
-| Dumpster comparison | 7 | 5 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
-| Property-cleanout cost | 6 | 7 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
-| Full-house timeline | 5 | 7 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
+| Junk-removal cost | 11 | 4 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
+| Dumpster comparison | 8 | 5 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
+| Property-cleanout cost | 7 | 7 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
+| Full-house timeline | 6 | 7 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
 | Rental turnover | 4 | 8 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
-| Accepted items | 5 | 11 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
+| Accepted items | 6 | 12 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
 | Estate-cleanout cost | 5 | 9 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
+| Large-item options | 5 | 9 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
 
 Inbound counts include the Blog index. Outbound counts cover crawlable internal links in the main article body; shared navigation, footer, CTA, and related aside links provide additional paths.
 
@@ -99,6 +103,7 @@ Scores are editorial audit judgments, not ranking predictions. `10` means the ar
 | Rental turnover | 10 | 10 | 9 | 9 | 9 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
 | Accepted items | 10 | 10 | 9 | 10 | 9 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
 | Estate-cleanout cost | 10 | 10 | 9 | 10 | 9 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
+| Large-item options | 10 | 10 | 9 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
 
 ### Article-specific findings
 
@@ -129,6 +134,14 @@ The page serves a distinct pre-quote decision intent across several service cate
 #### Estate-cleanout cost: Sufficient — Leave Alone after publication
 
 The page remains distinct from the general property-cleanout cost guide by centering the estate decision stage: authority to approve removal, separation of keepsakes and records, sorting status, family/executor boundaries, and preparation before hauling. It repeats physical cost drivers only where necessary to answer the estimate question, routes broader pricing and timing details to their dedicated guides, supplies no invented prices or duration ranges, and does not present Clear Path as probate counsel, an appraiser, an estate-sale company, or a document-sorting service.
+
+#### Large-item options: Sufficient — Leave Alone after publication
+
+The page answers a removal-method decision after the reader already knows the item: full-service labor, current local collection where verified, reuse, dumpster rental, or specialized handling. The accepted-items guide remains the category and acceptance-policy resource. The new guide uses only repository-supported Clear Path furniture, appliance, property-cleanout, labor, and photo-estimate claims; it intentionally avoids municipal schedules, curb limits, fees, collection days, named donation partners, and universal disposal rules.
+
+## Search Console editorial signal
+
+The large-item guide was prioritized after Google Search Console showed early impressions for `how to dispose of large items alexandria la`. This is treated as a directional search-intent signal, not verified high search volume or a ranking guarantee. The query informed the option-selection angle; it was not repeated mechanically in public copy.
 
 ## Current official Google guidance reviewed
 
