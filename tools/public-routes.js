@@ -1,7 +1,7 @@
 const publicRoutes = [
   { pathname: "/", lastmod: "2026-08-19" },
   { pathname: "/services/", lastmod: "2026-08-22" },
-  { pathname: "/services/property-cleanouts/", lastmod: "2026-08-23" },
+  { pathname: "/services/property-cleanouts/", lastmod: "2026-08-26" },
   { pathname: "/services/furniture-removal/", lastmod: "2026-08-24" },
   { pathname: "/services/estate-cleanouts/", lastmod: "2026-08-23" },
   { pathname: "/services/garage-cleanouts/", lastmod: "2026-08-19" },
@@ -20,8 +20,9 @@ const publicRoutes = [
   { pathname: "/blog/how-to-clean-out-rental-property-after-tenant-moves-out/", lastmod: "2026-08-21" },
   { pathname: "/blog/what-items-will-junk-removal-companies-take-alexandria-la/", lastmod: "2026-08-26" },
   { pathname: "/blog/estate-cleanout-cost-louisiana/", lastmod: "2026-08-23" },
-  { pathname: "/blog/how-to-get-rid-of-large-items-alexandria-la/", lastmod: "2026-08-24" },
+  { pathname: "/blog/how-to-get-rid-of-large-items-alexandria-la/", lastmod: "2026-08-26" },
   { pathname: "/blog/how-to-get-rid-of-yard-waste-alexandria-la/", lastmod: "2026-08-26" },
+  { pathname: "/blog/bulk-trash-pickup-vs-junk-removal-alexandria-la/", lastmod: "2026-08-26" },
 ];
 
 module.exports = { publicRoutes };

@@ -4,19 +4,19 @@ Audit date: August 26, 2026
 
 Production origin: `https://clearpathjunkla.com/`
 
-Scope: Every published Clear Path blog article after publication of the yard-waste disposal guide.
+Scope: Every published Clear Path blog article after publication of the Alexandria bulk-pickup comparison guide.
 
 This is internal repository documentation. `READ ME/` is excluded from GitHub Pages by `_config.yml`; this file is not a public route and must not be added to the sitemap or RSS feed.
 
 ## Overall assessment
 
-Clear Path has nine published articles organized around three connected clusters:
+Clear Path has ten published articles organized around three connected clusters:
 
 1. **Pricing and cleanup decisions** — general junk-removal cost, property-cleanout cost, estate-cleanout cost, and junk removal versus dumpster rental.
 2. **Property-cleanout planning** — full-house cleanout timeline and post-tenancy rental cleanout preparation.
-3. **Service-scope and removal decisions** — accepted-item categories, practical large-item and yard-waste disposal options, individual-review factors, and the boundary around hazardous or disposal-sensitive material.
+3. **Service-scope and removal decisions** — accepted-item categories, practical large-item and yard-waste disposal options, municipal bulk collection versus private removal, individual-review factors, and the boundary around hazardous or disposal-sensitive material.
 
-The current articles are sufficiently useful, discoverable, distinct, and technically optimized to remain largely intact. No existing article needs substantive rewriting. The yard-waste guide adds a disposal-method decision layer for outdoor plant material: it compares current local collection guidance, self-hauling, professional removal, dumpsters, and specialized handling. It does not duplicate the Yard Debris Removal page's commercial service intent or the accepted-items guide's category/eligibility intent.
+The current articles are sufficiently useful, discoverable, distinct, and technically optimized to remain largely intact. No existing article needs substantive rewriting. The bulk-pickup comparison adds a service-choice layer between current City collection and paid labor/hauling. It does not duplicate the accepted-items guide's category question, the large-item guide's broader menu of disposal options, the dumpster guide's container decision, or the commercial Property Cleanouts page.
 
 Strengths:
 
@@ -47,6 +47,7 @@ No material cannibalization was found.
 - `/blog/estate-cleanout-cost-louisiana/` answers how estate-specific authorization, keep/remove decisions, sorting status, and inherited-property scope affect a removal estimate.
 - `/blog/how-to-get-rid-of-large-items-alexandria-la/` answers which practical removal or disposal option may fit a known couch, mattress, appliance, furniture piece, or other bulky household item.
 - `/blog/how-to-get-rid-of-yard-waste-alexandria-la/` answers which practical disposal or removal option may fit branches, brush, bagged leaves, and other ordinary yard material in Alexandria.
+- `/blog/bulk-trash-pickup-vs-junk-removal-alexandria-la/` answers whether current City bulk collection or paid full-service labor and hauling better fits an Alexandria cleanup.
 
 The subject cluster overlaps naturally, but the pages answer different questions. Their internal links should help a reader move between price, time, process, proof, and service rather than compete through duplicated copy.
 
@@ -63,10 +64,11 @@ The subject cluster overlaps naturally, but the pages answer different questions
 | [How Much Does an Estate Cleanout Cost in Louisiana?](https://clearpathjunkla.com/blog/estate-cleanout-cost-louisiana/) | Aug. 23, 2026 | 1,634 | Understand how approved scope, decision readiness, sorting, access, and material affect an inherited-property removal estimate | Families, executors, heirs, owners, realtors, investors, and property managers | Estate Cleanouts and Property Cleanouts | Louisiana, with Alexandria/Central Louisiana emphasis |
 | [How to Get Rid of Large Items in Alexandria, LA](https://clearpathjunkla.com/blog/how-to-get-rid-of-large-items-alexandria-la/) | Aug. 24, 2026 | 1,590 | Choose a practical removal/disposal option for a known large household item; informed by the early GSC query signal “how to dispose of large items alexandria la” | Homeowners, renters, landlords, managers, realtors, investors, and families | Furniture Removal, Appliance Removal, and Property Cleanouts | Alexandria with Central Louisiana service context |
 | [How to Get Rid of Yard Waste in Alexandria, LA](https://clearpathjunkla.com/blog/how-to-get-rid-of-yard-waste-alexandria-la/) | Aug. 26, 2026 | 1,440 | Choose among current local collection guidance, self-hauling, professional removal, dumpster rental, and specialized handling for yard material; informed by the early GSC query signal “yard waste disposal alexandria la” | Homeowners, renters, landlords, managers, realtors, investors, and property owners | Yard Debris Removal | Alexandria with Central Louisiana service context |
+| [Bulk Trash Pickup vs. Junk Removal in Alexandria, LA: Which Do You Need?](https://clearpathjunkla.com/blog/bulk-trash-pickup-vs-junk-removal-alexandria-la/) | Aug. 26, 2026 | 1,841 | Decide whether current City bulk collection or paid junk-removal labor and hauling fits an unwanted-material cleanup | Alexandria residents, homeowners, renters, landlords, managers, realtors, investors, and families | Furniture Removal, Appliance Removal, and Property Cleanouts | Alexandria, with current City sanitation context and Central Louisiana service context |
 
 ## Metadata and discovery inventory
 
-All eight articles have unique metadata. Titles below are the actual `<title>` values; descriptions are the actual meta descriptions.
+All ten articles have unique metadata. Titles below are the actual `<title>` values; descriptions are the actual meta descriptions.
 
 | Article | Meta title | Meta description |
 | --- | --- | --- |
@@ -79,6 +81,7 @@ All eight articles have unique metadata. Titles below are the actual `<title>` v
 | Estate-cleanout cost | `How Much Does an Estate Cleanout Cost in Louisiana? \| Clear Path` | Learn what affects estate cleanout cost in Louisiana, including approved scope, sorting, volume, access, labor, material, and disposal requirements. |
 | Large-item options | `How to Get Rid of Large Items in Alexandria, LA \| Clear Path` | Learn your options for getting rid of couches, mattresses, appliances, furniture, and other bulky items in Alexandria, Louisiana. |
 | Yard-waste options | `How to Get Rid of Yard Waste in Alexandria, LA \| Clear Path` | Learn your options for branches, brush, bagged yard debris, and other yard waste in Alexandria, Louisiana. |
+| Bulk-pickup comparison | `Bulk Trash Pickup vs. Junk Removal in Alexandria, LA \| Clear Path` | Compare bulk trash pickup and junk removal in Alexandria, LA, including labor, bulky items, scheduling, property cleanouts, and when each option fits. |
 
 | Article | Contextual inbound links | Article-body outbound links | Canonical | Schema | Sitemap | RSS | Indexable |
 | --- | ---: | ---: | --- | --- | --- | --- | --- |
@@ -91,6 +94,7 @@ All eight articles have unique metadata. Titles below are the actual `<title>` v
 | Estate-cleanout cost | 5 | 9 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
 | Large-item options | 6 | 9 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
 | Yard-waste options | 5 | 5 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
+| Bulk-pickup comparison | 5 | 12 | Self-referencing HTTPS | `LocalBusiness`, `BreadcrumbList`, `BlogPosting` | Yes | Yes | Yes |
 
 Inbound counts include the Blog index. Outbound counts cover crawlable internal links in the main article body; shared navigation, footer, CTA, and related aside links provide additional paths.
 
@@ -109,6 +113,7 @@ Scores are editorial audit judgments, not ranking predictions. `10` means the ar
 | Estate-cleanout cost | 10 | 10 | 9 | 10 | 9 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
 | Large-item options | 10 | 10 | 9 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
 | Yard-waste options | 10 | 10 | 9 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
+| Bulk-pickup comparison | 10 | 10 | 9 | 10 | 10 | 10 | 10 | 10 | 10 | 10 | 9 | PASS | PASS | **Sufficient — Leave Alone after publication** |
 
 ### Article-specific findings
 
@@ -148,14 +153,24 @@ The page answers a removal-method decision after the reader already knows the it
 
 The page answers a disposal-method decision for outdoor plant material rather than duplicating the Yard Debris Removal service page. It uses the current official City sanitation page only for the narrow statements that small piles of bagged yard debris or leaves and limbs are part of City collection guidance, timing can vary, and contractor-created lawn debris is treated differently. It directs readers back to the current City page before curb placement, distinguishes Clear Path from municipal service, uses only the approved Clear Path branches, brush, ordinary trimmings, bagged leaves, light cleanup debris, and reviewed exterior-pile scope, and avoids invented schedules, pile limits, fees, disposal sites, storm policies, and acceptance claims.
 
+#### Bulk-pickup comparison: Sufficient — Leave Alone after publication
+
+The page serves the distinct decision “Can current City bulk collection handle this, or is paid labor and hauling the better fit?” It gives public collection fair treatment, clearly separates recurring sanitation from Clear Path's private on-demand service, and routes item eligibility, broad large-item options, dumpster rental, yard debris, and cleanout planning to their dedicated pages. Current City claims are limited to the official distinction between regular refuse and class 3 limbs/bulky debris, named examples such as sofas and chairs, timing variability, and the separate white-goods call-in/separation guidance. The article intentionally omits exact schedules, frequencies, fees, limits, mattress rules, storm procedures, and other municipal details that are outdated, unnecessary, or not clearly established for every reader.
+
 ## Search Console editorial signal
 
-The large-item guide was prioritized after Google Search Console showed early impressions for `how to dispose of large items alexandria la`. The yard-waste guide was prioritized after early impressions around `yard waste disposal alexandria la`. These are treated as directional search-intent signals, not verified high search volume or ranking guarantees. The queries informed each option-selection angle; they were not repeated mechanically in public copy.
+The large-item guide was prioritized after Google Search Console showed early impressions for `how to dispose of large items alexandria la`. The yard-waste guide was prioritized after early impressions around `yard waste disposal alexandria la`. The bulk-pickup comparison was prioritized from early Alexandria impressions involving bulk waste collection, residential trash service, special pickup, and City trash guidance. These are treated as directional search-intent signals, not verified high search volume or ranking guarantees. The queries informed each option-selection angle; they were not repeated mechanically in public copy.
 
 Official local sources reviewed for the yard-waste guide on August 26, 2026:
 
 - [City of Alexandria Sanitation](https://www.cityofalexandriala.com/resident/sanitation-trash-pickup/)
 - [City of Alexandria Environmental Services](https://www.cityofalexandriala.com/services/public-works/environmental-services/)
+
+Official local sources reviewed for the bulk-pickup comparison on August 26, 2026:
+
+- [City of Alexandria Sanitation](https://www.cityofalexandriala.com/resident/sanitation-trash-pickup/)
+- [Alexandria Connects service-request portal](https://www.cityofalexandriala.com/services/alexandria-connects/submit-request/)
+- [City of Alexandria Household Hazardous Waste Collection](https://www.cityofalexandriala.com/resident/utility-department/household-hazardous-waste-collection/) — reviewed only to avoid conflating event-specific hazardous-waste guidance with ordinary bulk collection; no event details were published in the article.
 
 ## Current official Google guidance reviewed
 
