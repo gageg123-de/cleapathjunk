@@ -10,6 +10,13 @@ const { publicRoutes } = require("./public-routes");
 const root = path.resolve(__dirname, "..");
 const errors = [];
 const htmlFiles = [];
+const protectedInternalDirectories = [
+  "content-deployment",
+  "audits",
+  "READ ME",
+  "tools",
+  "bookkeeping",
+];
 const today = new Intl.DateTimeFormat("en-CA", {
   timeZone: "America/Chicago",
   year: "numeric",
@@ -24,9 +31,19 @@ const expectedFiles = new Map(
   ]),
 );
 
+for (const { pathname } of publicRoutes) {
+  const normalizedRoute = decodeURIComponent(pathname).replace(/^\/+/, "");
+  const protectedDirectory = protectedInternalDirectories.find(
+    (directory) => normalizedRoute === directory || normalizedRoute.startsWith(`${directory}/`),
+  );
+  if (protectedDirectory) {
+    errors.push(`${pathname}: protected internal directory cannot enter the public route registry`);
+  }
+}
+
 function walk(dir) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if ([".git", "node_modules", "bookkeeping"].includes(entry.name)) continue;
+    if ([".git", "node_modules", ...protectedInternalDirectories].includes(entry.name)) continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) walk(full);
     else if (entry.name.endsWith(".html")) htmlFiles.push(full);
@@ -38,8 +55,25 @@ function relative(file) {
 }
 
 function localTarget(file, rawUrl) {
-  const cleanUrl = rawUrl.split(/[?#]/)[0];
-  if (!cleanUrl || /^(?:[a-z]+:|\/\/|#)/i.test(rawUrl)) return null;
+  let localUrl = rawUrl;
+  if (/^(?:[a-z]+:|\/\/)/i.test(rawUrl)) {
+    try {
+      const parsed = new URL(rawUrl, canonicalOrigin);
+      if (parsed.origin !== new URL(canonicalOrigin).origin) return null;
+      localUrl = `${parsed.pathname}${parsed.search}${parsed.hash}`;
+    } catch {
+      return null;
+    }
+  }
+  const encodedUrl = localUrl.split(/[?#]/)[0];
+  let cleanUrl;
+  try {
+    cleanUrl = decodeURIComponent(encodedUrl);
+  } catch {
+    errors.push(`${relative(file)}: malformed encoded internal path ${rawUrl}`);
+    return null;
+  }
+  if (!cleanUrl || localUrl.startsWith("#")) return null;
 
   let target;
   if (cleanUrl.startsWith("/")) {
@@ -59,6 +93,14 @@ function localTarget(file, rawUrl) {
 function checkTarget(file, rawUrl) {
   const target = localTarget(file, rawUrl);
   if (!target) return null;
+  const targetRel = relative(target);
+  const protectedDirectory = protectedInternalDirectories.find(
+    (directory) => targetRel === directory || targetRel.startsWith(`${directory}/`),
+  );
+  if (protectedDirectory) {
+    errors.push(`${relative(file)}: public reference enters protected internal directory ${rawUrl}`);
+    return null;
+  }
   if (!fs.existsSync(target)) {
     errors.push(`${relative(file)}: missing internal target ${rawUrl}`);
     return null;
@@ -245,6 +287,13 @@ for (const { pathname, lastmod } of publicRoutes) {
   if (lastmod > today) errors.push(`sitemap.xml: future lastmod for ${url}`);
 }
 if (sitemapUrls.some((url) => url.includes("404"))) errors.push("sitemap.xml: 404 page must be excluded");
+for (const url of sitemapUrls) {
+  const pathname = decodeURIComponent(new URL(url).pathname).replace(/^\/+/, "");
+  const protectedDirectory = protectedInternalDirectories.find(
+    (directory) => pathname === directory || pathname.startsWith(`${directory}/`),
+  );
+  if (protectedDirectory) errors.push(`sitemap.xml: protected internal directory published in ${url}`);
+}
 if (sitemapLastmods.length !== publicRoutes.length) errors.push("sitemap.xml: every URL must have a maintainable lastmod");
 
 const robots = fs.readFileSync(path.join(root, "robots.txt"), "utf8");
@@ -291,8 +340,83 @@ for (const privatePath of [".env", ".env.local", "customer-records", "transactio
 }
 
 const jekyllConfig = fs.readFileSync(path.join(root, "_config.yml"), "utf8");
-if (!/^\s*-\s+content-deployment\s*$/m.test(jekyllConfig)) {
-  errors.push("_config.yml: content-deployment must remain excluded from the public GitHub Pages build");
+const jekyllExclusions = new Set(
+  [...jekyllConfig.matchAll(/^\s*-\s+(.+?)\s*$/gm)].map((match) => match[1]),
+);
+for (const directory of protectedInternalDirectories) {
+  if (!jekyllExclusions.has(directory)) {
+    errors.push(`_config.yml: ${directory} must remain excluded from the public GitHub Pages build`);
+  }
+}
+
+const auditDirectory = path.join(root, "audits");
+for (const requiredAuditFile of ["README.md", "METHODOLOGY.md", "findings.schema.json"]) {
+  if (!fs.existsSync(path.join(auditDirectory, requiredAuditFile))) {
+    errors.push(`audits/${requiredAuditFile}: missing permanent audit-framework file`);
+  }
+}
+try {
+  JSON.parse(fs.readFileSync(path.join(auditDirectory, "findings.schema.json"), "utf8"));
+} catch (error) {
+  errors.push(`audits/findings.schema.json: invalid JSON (${error.message})`);
+}
+
+const auditSeverity = new Set(["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL"]);
+const auditPriority = new Set(["FIX NOW", "FIX SOON", "MONITOR", "LEAVE ALONE"]);
+const auditStatus = new Set(["OPEN", "RESOLVED", "MONITORING", "ACCEPTED", "NOT APPLICABLE"]);
+const auditJsonFiles = fs.existsSync(auditDirectory)
+  ? fs.readdirSync(auditDirectory).filter((name) => /^site-audit-\d{4}-\d{2}-\d{2}(?:-[a-z0-9-]+)?\.json$/.test(name))
+  : [];
+if (!auditJsonFiles.length) errors.push("audits/: expected at least one dated machine-readable audit record");
+
+for (const name of auditJsonFiles) {
+  const file = path.join(auditDirectory, name);
+  let record;
+  try {
+    record = JSON.parse(fs.readFileSync(file, "utf8"));
+  } catch (error) {
+    errors.push(`audits/${name}: invalid JSON (${error.message})`);
+    continue;
+  }
+
+  const date = name.match(/^site-audit-(\d{4}-\d{2}-\d{2})/)?.[1];
+  if (record.schema_version !== 1) errors.push(`audits/${name}: expected schema_version 1`);
+  if (record.audit_date !== date) errors.push(`audits/${name}: audit_date must match its filename`);
+  if (record.production_origin !== canonicalOrigin) errors.push(`audits/${name}: production_origin must match the canonical origin`);
+  if (!/^[0-9a-f]{40}$/.test(record.audited_commit || "")) errors.push(`audits/${name}: invalid audited_commit`);
+  if (record.post_audit_commit !== null && !/^[0-9a-f]{40}$/.test(record.post_audit_commit || "")) {
+    errors.push(`audits/${name}: invalid post_audit_commit`);
+  }
+  if (!Number.isInteger(record.public_route_count) || record.public_route_count < 0) {
+    errors.push(`audits/${name}: public_route_count must be a non-negative integer`);
+  }
+  if (!Array.isArray(record.findings)) {
+    errors.push(`audits/${name}: findings must be an array`);
+    continue;
+  }
+  const reportName = name.replace(/\.json$/, ".md");
+  if (!fs.existsSync(path.join(auditDirectory, reportName))) errors.push(`audits/${name}: missing matching ${reportName}`);
+
+  const findingIds = new Set();
+  for (const finding of record.findings) {
+    const label = `audits/${name} ${finding?.id || "finding"}`;
+    if (!finding?.id || findingIds.has(finding.id)) errors.push(`${label}: missing or duplicate id`);
+    findingIds.add(finding?.id);
+    if (finding.audit_date !== record.audit_date) errors.push(`${label}: audit_date must match the audit record`);
+    if (!finding.category) errors.push(`${label}: missing category`);
+    if (!auditSeverity.has(finding.severity)) errors.push(`${label}: invalid severity`);
+    if (!auditPriority.has(finding.priority)) errors.push(`${label}: invalid priority`);
+    if (!auditStatus.has(finding.status)) errors.push(`${label}: invalid lifecycle status`);
+    if (!Array.isArray(finding.affected_pages) || !finding.affected_pages.length) errors.push(`${label}: affected_pages must be a non-empty array`);
+    for (const field of ["issue", "evidence", "recommendation"]) if (!finding[field]) errors.push(`${label}: missing ${field}`);
+    if (typeof finding.implemented !== "boolean") errors.push(`${label}: implemented must be boolean`);
+    if (finding.implementation_commit !== null && !/^[0-9a-f]{40}$/.test(finding.implementation_commit || "")) {
+      errors.push(`${label}: invalid implementation_commit`);
+    }
+    if (finding.implemented && !finding.implementation_commit) errors.push(`${label}: implemented finding must record implementation_commit`);
+    if (!("regression_test" in finding)) errors.push(`${label}: missing regression_test field`);
+    if (!("notes" in finding)) errors.push(`${label}: missing notes field`);
+  }
 }
 
 if (canonicalOrigin === "https://clearpathjunkremoval.com") {

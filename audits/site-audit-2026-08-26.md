@@ -1,5 +1,18 @@
 # Clear Path Site-Wide Audit
 
+> **Historical baseline — do not overwrite.** This report preserves the first formal site-wide audit. Findings describe the state observed on the audit date and are not automatically current truth.
+
+| Record | Value |
+| --- | --- |
+| Audit date | August 26, 2026 |
+| Production origin | `https://clearpathjunkla.com/` |
+| Audited commit | `8039c9cd6b232a37ad66ac892b6c1a99a3cedf91` |
+| Post-audit/fix commit | `9473adcdeb55fff8a498512e56de4ae1a9d60a44` |
+| Audited public scope | 24 indexable routes plus one custom 404 |
+| Production verification | Completed after the post-audit commit; all intended routes remained available and protected internal campaign URLs returned 404 |
+
+The **audited commit** identifies the production/source state assessed before safe fixes. The **post-audit/fix commit** contains the fixes and original audit record. Open and resolved findings are preserved in the matching JSON file.
+
 Audit date: August 26, 2026  
 Production site: `https://clearpathjunkla.com/`  
 Repository route count: 24 indexable pages plus one custom 404
@@ -362,4 +375,3 @@ The site aligns with the core guidance: focused purpose, crawlable HTML, canonic
 11. **Any accessibility/mobile/performance issue capable of materially hurting users/search?** None observed. Privacy disclosure and conversion measurement are more material gaps than layout or speed.
 12. **Is the architecture safe to continue scaling?** Yes, cautiously. Add real proof and modularize sources before substantially increasing article/location count.
 13. **Five highest-ROI next improvements?** Privacy notice; conversion events; another real project; Search Console overlap monitoring; page-relevant optimized social images.
-

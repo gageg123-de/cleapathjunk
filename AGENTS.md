@@ -116,7 +116,7 @@ Key ownership rules:
 - `style.css` owns shared design and responsive behavior.
 - `script.js` owns the mobile menu, progressive reveal, estimate form behavior, before/after control support, and sticky mobile CTA visibility.
 - Generated public HTML, `sitemap.xml`, `robots.txt`, `feed.xml`, and `404.html` are build outputs and are committed.
-- `_config.yml` prevents tools, repository documentation, and the internal `content-deployment/` workspace from being published.
+- `_config.yml` prevents protected internal directories, repository documentation, audit history, and the internal `content-deployment/` workspace from being published.
 - `CNAME` must remain `clearpathjunkla.com` unless a verified domain migration is explicitly authorized.
 
 When a generated page needs a durable change, edit its source and rebuild. Do not hand-edit one generated HTML page when the next build would erase the change. After source changes, run:
@@ -370,7 +370,7 @@ Before creating content, ask:
 7. Which CTA fits the intent?
 8. Could it cannibalize an existing page?
 
-Search existing content first. Improve a useful page instead of creating a duplicate. Do not mass-produce thin city/service swaps or doorway pages.
+Search existing content first. Improve a useful page instead of creating a duplicate. Related vocabulary alone is not proof of cannibalization; compare the actual decision, audience, and page purpose before consolidating. Do not mass-produce thin city/service swaps or doorway pages.
 
 ## Local SEO and Content Architecture
 
@@ -384,6 +384,8 @@ The four main SEO content types have different jobs:
 4. **Blog articles** — informational intent and topical authority.
 
 The local SEO moat is evidence competitors cannot easily fake: real projects, genuine photos, verified Alexandria-area work, actual service details, practical pricing factors, clear process, and useful cleanup information. Do not rely on mass-produced generic articles.
+
+Before publishing a new service-area page, explicitly verify actual service relevance, unique user value, differentiated local information, useful internal connections, and factual local claims. City-name substitution is prohibited. Authentic privacy-approved project evidence is preferred where available, but is not a quota or a requirement to publish every job.
 
 ### Blog strategy
 
@@ -439,7 +441,7 @@ Avoid repeated templated introductions, keyword stuffing, filler transitions, un
 
 Never invent statistics, averages, prices, timelines, laws, regulations, competitor claims, guarantees, credentials, or business policies.
 
-For legal, regulatory, safety, health, or other changing claims, use current authoritative first-party sources when precise facts are necessary. When reliable sourcing is unavailable or precision is outside Clear Path's role, stay appropriately general, state the service boundary, and recommend verification rather than improvising advice. External research must not be used to manufacture local experience.
+For legal, regulatory, municipal, local-government, safety, health, or other changing claims, use current authoritative first-party sources when precise facts are necessary. When reliable sourcing is unavailable or precision is outside Clear Path's role, stay appropriately general, state the service boundary, and recommend verification rather than improvising advice. External research must not be used to manufacture local experience.
 
 #### Post-draft quality gate
 
@@ -509,6 +511,8 @@ Use descriptive anchors. Avoid repetitive “click here” links and unnatural e
 
 Real completed work is a core trust asset. Project pages should focus on general location, initial condition, verified scope, work performed, result, and clear before/after photography.
 
+Project publication is selective. Prefer a privacy-approved project with useful visual or operational evidence over another generic article created only to increase page count, but do not automatically publish every job. A published project must use accurate scope, protect the customer and property, omit financial details and private messages, and link contextually to relevant services, areas, articles, and the estimate path.
+
 The current public project retains `/projects/alexandria-duplex-cleanout/` for indexed URL continuity, while visible copy uses the privacy-safe “Alexandria Property Cleanout.” Do not expose the Cook Ave street number, customer name, private contact information, payment details, messages, or sensitive circumstances.
 
 ### Photography
@@ -538,6 +542,7 @@ If generated text is garbled, misspelled, or inconsistent, do not ship it. Use d
 
 - Non-public social and content-deployment work is governed by `content-deployment/CONTENT-GUIDE.md`.
 - `content-deployment/` is an internal tracked workspace, not a public website route. Keep it excluded in `_config.yml`, never link to it from public pages, and preserve the validator guard that enforces this deployment boundary.
+- `audits/`, `READ ME/`, `tools/`, and other declared internal directories are also non-public. Preserve their centralized `_config.yml` exclusions and validator guards; robots directives are not a substitute for deployment exclusion.
 - Keep real job photographs authentic and complete a privacy review before approval.
 - Link each content item to the most relevant existing website page; do not create a new public URL merely to support a social campaign.
 - External publication requires human approval.
@@ -621,6 +626,14 @@ For meaningful website changes:
 8. Stage only relevant public files.
 
 The validator currently protects crawlability, orphaning, metadata, canonicals, robots, Open Graph, Twitter cards, headings, image attributes, JSON-LD, sitemap, RSS, local assets, private-path exclusions, valid percentage arithmetic inside `min()`/`max()`, and shared article-container ownership. The width safeguards added after commit `50e86c7` are permanent unless equivalent tests replace them.
+
+### Audit history and evidence-driven changes
+
+`audits/` is the permanent internal audit history; `audits/METHODOLOGY.md` owns the reusable procedure and comparison protocol. Never overwrite a completed dated audit. A future major audit must read the latest report and matching findings, establish current state versus previous state, and retest every carried-forward finding before calling it open, resolved, or regressed.
+
+An audit is evidence gathering, not automatic authorization to optimize production. Implement objective, demonstrated, low-risk fixes first in this order: crawl/indexation failure, privacy/security, conversion failure, commercial local SEO, mobile/accessibility, architecture, content intent, performance, then visual polish. Keep owner-dependent or subjective findings as recommendations until approved. Temporary counts, measurements, rankings, asset sizes, and current content conditions belong in dated audit records, not permanent rules.
+
+Use a lightweight audit after meaningful structural or deployment changes when warranted. Run a major site-wide audit periodically, after substantial site/service-area expansion or architecture change, or when production/Search Console evidence indicates a systemic issue. Do not impose a fixed audit frequency without need.
 
 For visual changes, automated validation is necessary but insufficient. Inspect actual rendered pages and screenshots at 320, 375, 390, 430, 768, 1024, and 1440 pixels as appropriate. Check document width, body width, representative prose geometry, headings, CTAs, images, tables, footer, fixed controls, and full-bleed intent.
 

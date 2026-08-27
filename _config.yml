@@ -7,4 +7,6 @@ exclude:
   - README.md
   - AGENTS.md
   - content-deployment
+  - audits
+  - bookkeeping
   - .gitignore

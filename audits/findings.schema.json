@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:clear-path:site-audit-findings:v1",
+  "title": "Clear Path Site Audit Findings",
+  "description": "Internal, non-public convention for dated Clear Path site-audit findings.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "audit_date",
+    "production_origin",
+    "audited_commit",
+    "post_audit_commit",
+    "public_route_count",
+    "findings"
+  ],
+  "properties": {
+    "schema_version": { "type": "integer", "minimum": 1 },
+    "audit_date": { "type": "string", "format": "date" },
+    "production_origin": { "type": "string", "format": "uri" },
+    "audited_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "post_audit_commit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$" },
+    "public_route_count": { "type": "integer", "minimum": 0 },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    }
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": [
+        "id",
+        "audit_date",
+        "category",
+        "severity",
+        "priority",
+        "status",
+        "affected_pages",
+        "issue",
+        "evidence",
+        "recommendation",
+        "implemented",
+        "implementation_commit",
+        "regression_test",
+        "notes"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "audit_date": { "type": "string", "format": "date" },
+        "category": { "type": "string", "minLength": 1 },
+        "severity": { "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL"] },
+        "priority": { "enum": ["FIX NOW", "FIX SOON", "MONITOR", "LEAVE ALONE"] },
+        "status": { "enum": ["OPEN", "RESOLVED", "MONITORING", "ACCEPTED", "NOT APPLICABLE"] },
+        "affected_pages": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+        "issue": { "type": "string", "minLength": 1 },
+        "evidence": { "type": "string", "minLength": 1 },
+        "recommendation": { "type": "string", "minLength": 1 },
+        "implemented": { "type": "boolean" },
+        "implementation_commit": { "type": ["string", "null"], "pattern": "^[0-9a-f]{40}$" },
+        "regression_test": { "type": ["string", "null"] },
+        "notes": { "type": ["string", "null"] }
+      },
+      "additionalProperties": true
+    }
+  }
+}
