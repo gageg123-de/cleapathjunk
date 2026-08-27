@@ -6,4 +6,5 @@ exclude:
   - READ ME
   - README.md
   - AGENTS.md
+  - content-deployment
   - .gitignore

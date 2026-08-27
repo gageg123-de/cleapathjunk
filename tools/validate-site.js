@@ -98,6 +98,9 @@ for (const file of htmlFiles) {
   if (/(?:href|src)="\/\/(?!\/)/i.test(html)) {
     errors.push(`${rel}: protocol-relative path found where a root path is expected`);
   }
+  if (/(?:href|action)="\/index\.html(?:[#?"])/i.test(html)) {
+    errors.push(`${rel}: internal links must use the canonical homepage root instead of /index.html`);
+  }
   const route = expectedFiles.get(rel);
   const is404 = rel === "404.html";
 
@@ -285,6 +288,11 @@ for (const requiredIgnore of ["bookkeeping/", ".env", ".env.*", "*.pem", "*.key"
 }
 for (const privatePath of [".env", ".env.local", "customer-records", "transactions.csv"]) {
   if (fs.existsSync(path.join(root, privatePath))) errors.push(`private path present in publish tree: ${privatePath}`);
+}
+
+const jekyllConfig = fs.readFileSync(path.join(root, "_config.yml"), "utf8");
+if (!/^\s*-\s+content-deployment\s*$/m.test(jekyllConfig)) {
+  errors.push("_config.yml: content-deployment must remain excluded from the public GitHub Pages build");
 }
 
 if (canonicalOrigin === "https://clearpathjunkremoval.com") {

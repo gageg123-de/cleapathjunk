@@ -116,7 +116,7 @@ Key ownership rules:
 - `style.css` owns shared design and responsive behavior.
 - `script.js` owns the mobile menu, progressive reveal, estimate form behavior, before/after control support, and sticky mobile CTA visibility.
 - Generated public HTML, `sitemap.xml`, `robots.txt`, `feed.xml`, and `404.html` are build outputs and are committed.
-- `_config.yml` prevents tools and repository documentation from being published.
+- `_config.yml` prevents tools, repository documentation, and the internal `content-deployment/` workspace from being published.
 - `CNAME` must remain `clearpathjunkla.com` unless a verified domain migration is explicitly authorized.
 
 When a generated page needs a durable change, edit its source and rebuild. Do not hand-edit one generated HTML page when the next build would erase the change. After source changes, run:
@@ -537,6 +537,7 @@ If generated text is garbled, misspelled, or inconsistent, do not ship it. Use d
 ## Content Deployment
 
 - Non-public social and content-deployment work is governed by `content-deployment/CONTENT-GUIDE.md`.
+- `content-deployment/` is an internal tracked workspace, not a public website route. Keep it excluded in `_config.yml`, never link to it from public pages, and preserve the validator guard that enforces this deployment boundary.
 - Keep real job photographs authentic and complete a privacy review before approval.
 - Link each content item to the most relevant existing website page; do not create a new public URL merely to support a social campaign.
 - External publication requires human approval.

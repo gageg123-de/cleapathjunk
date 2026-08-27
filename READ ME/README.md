@@ -4,7 +4,7 @@ Dependency-free static website for Clear Path Junk Removal. The generated HTML c
 
 ## Site architecture
 
-- `/` — homepage, estimate form, pricing, reviews placeholder, before/after slider
+- `/` — concise photo-first homepage, services, project proof, pricing, and estimate form
 - `/services/` — service overview
 - `/services/property-cleanouts/`
 - `/services/furniture-removal/`
@@ -23,6 +23,11 @@ Dependency-free static website for Clear Path Junk Removal. The generated HTML c
 - `/blog/property-cleanout-cost-louisiana/`
 - `/blog/how-long-does-a-full-house-cleanout-take-louisiana/`
 - `/blog/how-to-clean-out-rental-property-after-tenant-moves-out/`
+- `/blog/what-items-will-junk-removal-companies-take-alexandria-la/`
+- `/blog/estate-cleanout-cost-louisiana/`
+- `/blog/how-to-get-rid-of-large-items-alexandria-la/`
+- `/blog/how-to-get-rid-of-yard-waste-alexandria-la/`
+- `/blog/bulk-trash-pickup-vs-junk-removal-alexandria-la/`
 
 Shared design and behavior live in `style.css` and `script.js`. `tools/build-site.js` contains the reusable page templates and content data used to generate the static HTML files.
 
@@ -101,13 +106,13 @@ Future content ideas are shown only on the blog index as an editorial roadmap. T
 - Add accurate alt text, intrinsic width/height, and `loading="lazy"` below the fold.
 - Compress copies when practical without destroying the original.
 
-The hero and before/after slider use optimized WebP delivery copies. Their original PNG files remain preserved in the same folder.
+The homepage and project proof use optimized WebP delivery copies. Original PNG assets remain preserved in the same folder where they are still needed as source or compatibility files.
 
-The Alexandria duplex case study currently uses one confirmed real before/after image. Add more only after verifying that they belong to that job.
+The Alexandria property-cleanout case study uses ten confirmed job photos arranged as five before/after pairs. Add more only after verifying that they belong to that job and pass the privacy review.
 
-## Reviews configuration
+## Reviews policy
 
-No unverified testimonials or ratings are published. When the verified Google Business Profile review URL is available, add it to `GOOGLE_REVIEWS_URL` in `script.js`. The “Read Our Google Reviews” link remains hidden until that value is configured.
+No unverified testimonials, ratings, or review totals are published. Add a review integration only after the destination and displayed claims are verified; do not create placeholder customer quotes.
 
 ## SEO checklist
 

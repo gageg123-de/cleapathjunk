@@ -1,0 +1,150 @@
+{
+  "auditDate": "2026-08-26",
+  "productionOrigin": "https://clearpathjunkla.com",
+  "publicRouteCount": 24,
+  "findings": [
+    {
+      "id": "AUD-001",
+      "severity": "CRITICAL",
+      "category": "privacy/deployment",
+      "page": "/content-deployment/",
+      "issue": "Internal campaign workspace was publicly reachable through GitHub Pages.",
+      "evidence": "Representative markdown, JSON, privacy-review, and source-image URLs returned HTTP 200.",
+      "recommendation": "Exclude content-deployment from Pages and keep the exclusion validator-enforced.",
+      "status": "FIX NOW",
+      "implemented": true
+    },
+    {
+      "id": "AUD-002",
+      "severity": "HIGH",
+      "category": "privacy/conversion",
+      "page": "/#contact",
+      "issue": "No public privacy notice accompanies Formspree lead collection and Google Analytics.",
+      "evidence": "The form collects name, phone, optional email, and job details; no privacy-policy route exists.",
+      "recommendation": "Publish an owner-approved truthful privacy notice and add a concise form disclosure.",
+      "status": "FIX SOON",
+      "implemented": false
+    },
+    {
+      "id": "AUD-003",
+      "severity": "MEDIUM",
+      "category": "crawlability/canonicalization",
+      "page": "site-wide",
+      "issue": "Shared navigation and estimate links used the duplicate /index.html homepage URL.",
+      "evidence": "Every generated page linked /index.html fragments while /index.html returned 200 and canonicalized to /.",
+      "recommendation": "Use root fragments and reject /index.html internal links in validation.",
+      "status": "FIX NOW",
+      "implemented": true
+    },
+    {
+      "id": "AUD-004",
+      "severity": "MEDIUM",
+      "category": "analytics",
+      "page": "site-wide",
+      "issue": "Primary conversion actions are not measured as analytics events.",
+      "evidence": "GA pageview code is present; no SMS, telephone, form-success, service, or project events are emitted.",
+      "recommendation": "Define a small approved GA event taxonomy and instrument primary conversions.",
+      "status": "FIX SOON",
+      "implemented": false
+    },
+    {
+      "id": "AUD-005",
+      "severity": "MEDIUM",
+      "category": "content/cannibalization",
+      "page": "property-cleanout article cluster",
+      "issue": "Property-cost, estate-cost, timeline, and rental guides share substantial vocabulary.",
+      "evidence": "Semantic similarity is high, but headings and primary decisions remain distinct.",
+      "recommendation": "Monitor Search Console query/page pairing before consolidation or further variants.",
+      "status": "MONITOR",
+      "implemented": false
+    },
+    {
+      "id": "AUD-006",
+      "severity": "MEDIUM",
+      "category": "local-seo",
+      "page": "/service-areas/pineville-la/",
+      "issue": "Pineville shares substantial structure with Alexandria and could become a doorway template if scaled.",
+      "evidence": "Current page remains unique enough, but location-page similarity is the strongest page-type overlap.",
+      "recommendation": "Do not add more city pages without unique local usefulness and verified project evidence.",
+      "status": "MONITOR",
+      "implemented": false
+    },
+    {
+      "id": "AUD-007",
+      "severity": "MEDIUM",
+      "category": "trust/local-seo",
+      "page": "/projects/",
+      "issue": "Only one project case study supports the entire service and location architecture.",
+      "evidence": "The single Alexandria project is strong but is the only project route.",
+      "recommendation": "Add privacy-approved real projects before expanding generic content or locations.",
+      "status": "FIX SOON",
+      "implemented": false
+    },
+    {
+      "id": "AUD-008",
+      "severity": "MEDIUM",
+      "category": "maintainability",
+      "page": "tools/build-site.js",
+      "issue": "The build source is monolithic and retains dormant legacy homepage/project blocks.",
+      "evidence": "The file is approximately 198 KB and combines services, areas, articles, feed, and legacy/current content ownership.",
+      "recommendation": "Modularize only with exact-output and validator parity tests.",
+      "status": "FIX SOON",
+      "implemented": false
+    },
+    {
+      "id": "AUD-009",
+      "severity": "LOW",
+      "category": "performance/image-seo",
+      "page": "site-wide social metadata",
+      "issue": "The default hero-truck PNG is approximately 2.68 MB and generic for several page types.",
+      "evidence": "It is used in default Open Graph/Twitter metadata; normal page rendering uses smaller assets.",
+      "recommendation": "Use smaller social-compatible and page-relevant authentic images.",
+      "status": "FIX SOON",
+      "implemented": false
+    },
+    {
+      "id": "AUD-010",
+      "severity": "LOW",
+      "category": "accessibility/mobile",
+      "page": "service and area FAQs",
+      "issue": "FAQ summary controls are about 25.6 CSS pixels high.",
+      "evidence": "They exceed the 24px WCAG 2.2 minimum but are below the site's preferred 44px comfort target.",
+      "recommendation": "Increase the summary hit area during a future component pass.",
+      "status": "MONITOR",
+      "implemented": false
+    },
+    {
+      "id": "AUD-011",
+      "severity": "LOW",
+      "category": "content/trust",
+      "page": "/blog/*",
+      "issue": "Articles lack visible authorship attribution.",
+      "evidence": "Business attribution appears in schema but not as a visible byline/profile path.",
+      "recommendation": "Add accurate organization or named-author attribution only after approval.",
+      "status": "FIX SOON",
+      "implemented": false
+    },
+    {
+      "id": "AUD-012",
+      "severity": "LOW",
+      "category": "documentation",
+      "page": "READ ME/README.md",
+      "issue": "Architecture documentation omitted five articles and described removed homepage/review behavior.",
+      "evidence": "Documented routes and integrations did not match the generated site or script.",
+      "recommendation": "Update the repository documentation to current architecture.",
+      "status": "FIX NOW",
+      "implemented": true
+    },
+    {
+      "id": "AUD-013",
+      "severity": "INFORMATIONAL",
+      "category": "technical-seo",
+      "page": "site-wide",
+      "issue": "No orphan, broken internal link, bad canonical, sitemap mismatch, invalid schema, or mobile overflow was found.",
+      "evidence": "All 24 routes returned 200; route graph depth is 0-2; validator and 72 browser checks passed.",
+      "recommendation": "Preserve current architecture and regression guards.",
+      "status": "LEAVE ALONE",
+      "implemented": false
+    }
+  ]
+}
