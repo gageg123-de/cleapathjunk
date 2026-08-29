@@ -23,6 +23,7 @@ const publicRoutes = [
   { pathname: "/blog/how-to-get-rid-of-large-items-alexandria-la/", lastmod: "2026-08-26" },
   { pathname: "/blog/how-to-get-rid-of-yard-waste-alexandria-la/", lastmod: "2026-08-26" },
   { pathname: "/blog/bulk-trash-pickup-vs-junk-removal-alexandria-la/", lastmod: "2026-08-26" },
+  { pathname: "/blog/furniture-removal-cost-alexandria-la/", lastmod: "2026-08-28" },
 ];
 
 module.exports = { publicRoutes };
