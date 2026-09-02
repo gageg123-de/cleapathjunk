@@ -24,6 +24,7 @@ const publicRoutes = [
   { pathname: "/blog/how-to-get-rid-of-yard-waste-alexandria-la/", lastmod: "2026-08-26" },
   { pathname: "/blog/bulk-trash-pickup-vs-junk-removal-alexandria-la/", lastmod: "2026-08-26" },
   { pathname: "/blog/furniture-removal-cost-alexandria-la/", lastmod: "2026-08-28" },
+  { pathname: "/blog/foreclosure-cleanouts-alexandria-la/", lastmod: "2026-09-02" },
 ];
 
 module.exports = { publicRoutes };

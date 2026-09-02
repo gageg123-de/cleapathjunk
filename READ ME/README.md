@@ -29,6 +29,7 @@ Dependency-free static website for Clear Path Junk Removal. The generated HTML c
 - `/blog/how-to-get-rid-of-yard-waste-alexandria-la/`
 - `/blog/bulk-trash-pickup-vs-junk-removal-alexandria-la/`
 - `/blog/furniture-removal-cost-alexandria-la/`
+- `/blog/foreclosure-cleanouts-alexandria-la/`
 
 Shared design and behavior live in `style.css` and `script.js`. `tools/build-site.js` contains the reusable page templates and content data used to generate the static HTML files.
 
