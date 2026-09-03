@@ -1,6 +1,55 @@
 const navbar = document.querySelector("#navbar");
 const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
+const analyticsConsentKey = "clearPathAnalyticsConsent";
+const analyticsConsent = document.querySelector("#analyticsConsent");
+
+const readAnalyticsConsent = () => {
+  try {
+    const choice = localStorage.getItem(analyticsConsentKey);
+    return choice === "granted" || choice === "denied" ? choice : null;
+  } catch (error) {
+    return null;
+  }
+};
+
+const writeAnalyticsConsent = (choice) => {
+  try {
+    localStorage.setItem(analyticsConsentKey, choice);
+  } catch (error) {
+    // Consent still applies for this page when browser storage is unavailable.
+  }
+};
+
+const applyAnalyticsConsent = (choice) => {
+  const analyticsStorage = choice === "granted" ? "granted" : "denied";
+  window.gtag?.("consent", "update", {
+    analytics_storage: analyticsStorage,
+    ad_storage: "denied",
+    ad_user_data: "denied",
+    ad_personalization: "denied",
+  });
+  window.clarity?.("consentv2", {
+    ad_Storage: "denied",
+    analytics_Storage: analyticsStorage,
+  });
+  window.clearPathAnalyticsConsent = choice;
+  writeAnalyticsConsent(choice);
+  analyticsConsent.hidden = true;
+};
+
+if (analyticsConsent) {
+  analyticsConsent.hidden = readAnalyticsConsent() !== null;
+  analyticsConsent.querySelectorAll("[data-consent-choice]").forEach((button) => {
+    button.addEventListener("click", () => applyAnalyticsConsent(button.dataset.consentChoice));
+  });
+  document.querySelectorAll("[data-open-consent]").forEach((button) => {
+    button.addEventListener("click", () => {
+      analyticsConsent.hidden = false;
+      analyticsConsent.querySelector("[data-consent-choice]")?.focus();
+    });
+  });
+}
 
 const setScrolled = () => navbar?.classList.toggle("is-scrolled", window.scrollY > 12);
 setScrolled();

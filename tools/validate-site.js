@@ -4,6 +4,8 @@ const {
   basePath,
   canonicalOrigin,
   canonicalUrl,
+  clarityProjectId,
+  googleAnalyticsId,
 } = require("./site-config");
 const { publicRoutes } = require("./public-routes");
 
@@ -215,6 +217,35 @@ for (const file of htmlFiles) {
   if (!/<link\s+rel="sitemap"[^>]+href="[^"]+"/i.test(html)) errors.push(`${rel}: missing sitemap discovery link`);
   if (!/<link\s+rel="alternate"[^>]+type="application\/rss\+xml"/i.test(html)) errors.push(`${rel}: missing RSS discovery link`);
 
+  const clarityLoaders = [...html.matchAll(/https:\/\/www\.clarity\.ms\/tag\//g)];
+  if (clarityLoaders.length !== 1) errors.push(`${rel}: expected one Microsoft Clarity loader, found ${clarityLoaders.length}`);
+  const clarityIds = [...html.matchAll(new RegExp(clarityProjectId, "g"))];
+  if (clarityIds.length !== 1) errors.push(`${rel}: expected the configured Clarity project ID exactly once`);
+  const googleTagLoaders = [...html.matchAll(new RegExp(`https://www\\.googletagmanager\\.com/gtag/js\\?id=${googleAnalyticsId}`, "g"))];
+  if (googleTagLoaders.length !== 1) errors.push(`${rel}: expected one configured Google Analytics loader`);
+  if (!html.includes('gtag("consent","default"')) errors.push(`${rel}: missing default Google Consent Mode state`);
+  if (!html.includes('analytics_storage:choice==="granted"?"granted":"denied"')) errors.push(`${rel}: analytics storage is not tied to the saved visitor choice`);
+  if (!html.includes('window.clarity("consentv2"')) errors.push(`${rel}: missing Microsoft Clarity Consent V2 initialization`);
+  if (!html.includes('ad_Storage:"denied"')) errors.push(`${rel}: Clarity advertising storage must default to denied`);
+  for (const deniedType of ["ad_storage", "ad_user_data", "ad_personalization"]) {
+    if (!html.includes(`${deniedType}:"denied"`)) errors.push(`${rel}: ${deniedType} must default to denied`);
+  }
+  if (!html.includes('id="analyticsConsent"') || !html.includes('data-open-consent')) {
+    errors.push(`${rel}: missing analytics consent controls`);
+  }
+  if (!html.includes('href="/privacy/"')) errors.push(`${rel}: missing crawlable privacy link`);
+  if (/data-clarity-unmask/i.test(html)) errors.push(`${rel}: Clarity unmasking is prohibited`);
+  const estimateFormTag = html.match(/<form\b[^>]*id="estimateForm"[^>]*>/i)?.[0];
+  if (estimateFormTag && !/data-clarity-mask="true"/i.test(estimateFormTag)) {
+    errors.push(`${rel}: estimate form must remain explicitly masked for Clarity`);
+  }
+
+  if (route === "/privacy/") {
+    for (const disclosure of ["Microsoft Clarity", "Google Analytics", "Formspree", "session replay", "Analytics storage is denied by default", "Privacy choices"]) {
+      if (!html.includes(disclosure)) errors.push(`${rel}: privacy notice is missing ${disclosure}`);
+    }
+  }
+
   const schemaTypes = [];
   for (const match of html.matchAll(/<script\s+type="application\/ld\+json">([\s\S]*?)<\/script>/gi)) {
     try {
@@ -272,6 +303,13 @@ if (/\.article-layout\{[^}]*\bwidth:100%/i.test(css)) {
   errors.push("style.css: article-layout must preserve the shared container gutter instead of overriding it with width:100%");
 }
 for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/gi)) checkTarget(cssFile, match[1]);
+
+const scriptFile = path.join(root, "script.js");
+const script = fs.readFileSync(scriptFile, "utf8");
+if (!script.includes('gtag?.("consent", "update"')) errors.push("script.js: missing consent update behavior");
+if (!script.includes('analytics_storage: analyticsStorage')) errors.push("script.js: analytics consent choice is not passed to Google Consent Mode");
+if (!script.includes('clarity?.("consentv2"')) errors.push("script.js: analytics consent choice is not passed to Clarity Consent V2");
+if (/clarity\s*\(\s*["'](?:identify|set)["']/i.test(script)) errors.push("script.js: Clarity identifiers or custom properties require a separate privacy review");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
 if (!sitemap.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')) errors.push("sitemap.xml: invalid urlset namespace");

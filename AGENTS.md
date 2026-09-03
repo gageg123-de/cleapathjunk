@@ -602,6 +602,8 @@ Do not trade accessibility for visual minimalism.
 
 Never expose customer contact details, invoices, payment information, receipts, private addresses, credentials, API keys, access tokens, environment secrets, verification tokens, or private correspondence.
 
+Third-party analytics or tracking must be implemented once through shared architecture, use centrally maintained public identifiers, include accurate privacy disclosure and accessible consent controls when applicable, and preserve performance and crawlability. Default conservatively when consent is unknown. Never send names, phone numbers, email addresses, exact customer addresses, form contents, SMS contents, or other personally identifiable customer data in analytics events. Do not add custom unmasking for forms or sensitive inputs.
+
 ### `bookkeeping/` hard boundary
 
 `bookkeeping/` is private and outside the public website context. During website work, treat it as nonexistent. Do not list it, search it, open it, read its README, summarize it, modify it, validate it, stage it, commit it, push it, or use it as a source for public content.

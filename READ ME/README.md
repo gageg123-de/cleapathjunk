@@ -17,6 +17,7 @@ Dependency-free static website for Clear Path Junk Removal. The generated HTML c
 - `/service-areas/pineville-la/`
 - `/projects/` — recent work index
 - `/projects/alexandria-duplex-cleanout/`
+- `/privacy/` — analytics, consent, and estimate-form privacy notice
 - `/blog/` — article index and editorial roadmap
 - `/blog/junk-removal-cost-alexandria-la/`
 - `/blog/junk-removal-vs-dumpster-rental-alexandria-la/`
@@ -138,6 +139,9 @@ No unverified testimonials, ratings, or review totals are published. Add a revie
 - Formspree endpoint: `https://formspree.io/f/xgojwqao`
 - Public URL: `https://clearpathjunkla.com/`
 - Google Analytics ID: `G-B9NEK0F2FQ`
+- Microsoft Clarity project ID: `ycblmnmumf`
+
+Google Analytics and Microsoft Clarity share the site's lightweight consent control. Analytics storage defaults to denied, advertising-related consent remains denied, and visitors can change their analytics choice through the footer. The estimate form is explicitly masked for Clarity and links to the public privacy notice.
 
 Search `tools/build-site.js`, `index.html`, and `script.js` when updating these values.
 

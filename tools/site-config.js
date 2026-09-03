@@ -1,5 +1,8 @@
 const normalizeOrigin = (value) => String(value).replace(/\/+$/, "");
 
+const googleAnalyticsId = "G-B9NEK0F2FQ";
+const clarityProjectId = "ycblmnmumf";
+
 const normalizeBasePath = (value) => {
   const clean = String(value || "/").trim().replace(/^\/+|\/+$/g, "");
   return clean ? `/${clean}/` : "/";
@@ -30,8 +33,10 @@ module.exports = {
   basePath,
   canonicalOrigin,
   canonicalUrl,
+  clarityProjectId,
   deploymentOrigin,
   deploymentUrl,
+  googleAnalyticsId,
   normalizeBasePath,
   withBasePath,
 };

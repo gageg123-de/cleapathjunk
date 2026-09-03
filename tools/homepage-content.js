@@ -92,7 +92,7 @@ function homepage({ sms, phone, tel, email }) {
     </aside>
     <details class="estimate-details" id="estimate-options">
       <summary>Request Estimate Online <span aria-hidden="true">+</span></summary>
-      <form class="estimate-form" id="estimateForm" action="https://formspree.io/f/xgojwqao" method="post">
+      <form class="estimate-form" id="estimateForm" action="https://formspree.io/f/xgojwqao" method="post" data-clarity-mask="true">
       <input type="hidden" name="_subject" value="New Clear Path estimate request">
       <div class="form-intro full"><p class="eyebrow">Prefer a form?</p><h3>Request Estimate Online</h3></div>
       <div class="form-row"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required></div>
@@ -100,6 +100,7 @@ function homepage({ sms, phone, tel, email }) {
       <div class="form-row full"><label for="email">Email <span class="optional-label">(optional)</span></label><input id="email" name="email" type="email" autocomplete="email"></div>
       <div class="form-row full"><label for="description">What needs to go?</label><textarea id="description" name="description" required></textarea></div>
       <button class="btn btn-outline full form-submit" type="submit">Request Estimate Online</button>
+      <p class="form-privacy full">Form details are processed by Formspree so Clear Path can respond. Read the <a href="/privacy/">Privacy Notice</a>.</p>
       <p class="form-success" id="formSuccess" role="status" aria-live="polite">Thanks! Your request was received. For the fastest quote, text photos to ${phone}.</p>
       <p class="form-error" id="formError" role="alert">We could not send your request. Please text photos to ${phone}.</p>
       </form>

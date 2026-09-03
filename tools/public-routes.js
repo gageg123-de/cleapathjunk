@@ -12,6 +12,7 @@ const publicRoutes = [
   { pathname: "/service-areas/pineville-la/", lastmod: "2026-08-19" },
   { pathname: "/projects/", lastmod: "2026-08-19" },
   { pathname: "/projects/alexandria-duplex-cleanout/", lastmod: "2026-08-21" },
+  { pathname: "/privacy/", lastmod: "2026-09-02" },
   { pathname: "/blog/", lastmod: "2026-08-26" },
   { pathname: "/blog/junk-removal-cost-alexandria-la/", lastmod: "2026-08-26" },
   { pathname: "/blog/junk-removal-vs-dumpster-rental-alexandria-la/", lastmod: "2026-08-20" },
