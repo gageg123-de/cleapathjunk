@@ -2,6 +2,8 @@ const normalizeOrigin = (value) => String(value).replace(/\/+$/, "");
 
 const googleAnalyticsId = "G-B9NEK0F2FQ";
 const clarityProjectId = "ycblmnmumf";
+const mobileAnalyticsConsentDelayMs = 10000;
+const mobileAnalyticsConsentMaxWidth = 699;
 
 const normalizeBasePath = (value) => {
   const clean = String(value || "/").trim().replace(/^\/+|\/+$/g, "");
@@ -37,6 +39,8 @@ module.exports = {
   deploymentOrigin,
   deploymentUrl,
   googleAnalyticsId,
+  mobileAnalyticsConsentDelayMs,
+  mobileAnalyticsConsentMaxWidth,
   normalizeBasePath,
   withBasePath,
 };

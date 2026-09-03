@@ -3,6 +3,12 @@ const menuToggle = document.querySelector(".menu-toggle");
 const mobileMenu = document.querySelector("#mobileMenu");
 const analyticsConsentKey = "clearPathAnalyticsConsent";
 const analyticsConsent = document.querySelector("#analyticsConsent");
+const analyticsPromptDeadlineKey = "clearPathAnalyticsPromptDeadline";
+const analyticsPromptSuppressedKey = "clearPathAnalyticsPromptSuppressed";
+const mobileAnalyticsConsentDelayMs = Number(analyticsConsent?.dataset.mobileDelayMs || 0);
+const mobileAnalyticsConsentMaxWidth = Number(analyticsConsent?.dataset.mobileMaxWidth || 0);
+const mobileAnalyticsConsentQuery = matchMedia(`(max-width: ${mobileAnalyticsConsentMaxWidth}px)`);
+let analyticsPromptTimer;
 
 const readAnalyticsConsent = () => {
   try {
@@ -21,6 +27,74 @@ const writeAnalyticsConsent = (choice) => {
   }
 };
 
+const readSessionValue = (key) => {
+  try {
+    return sessionStorage.getItem(key);
+  } catch (error) {
+    return null;
+  }
+};
+
+const writeSessionValue = (key, value) => {
+  try {
+    sessionStorage.setItem(key, value);
+  } catch (error) {
+    // The timer still works for this page when session storage is unavailable.
+  }
+};
+
+const clearSessionValue = (key) => {
+  try {
+    sessionStorage.removeItem(key);
+  } catch (error) {
+    // No stored timer state needs clearing when session storage is unavailable.
+  }
+};
+
+const cancelAnalyticsPromptTimer = () => {
+  if (analyticsPromptTimer) clearTimeout(analyticsPromptTimer);
+  analyticsPromptTimer = undefined;
+};
+
+const showAnalyticsConsent = ({ focus = false } = {}) => {
+  cancelAnalyticsPromptTimer();
+  analyticsConsent.hidden = false;
+  if (focus) analyticsConsent.querySelector("[data-consent-choice]")?.focus();
+};
+
+const suppressPendingAnalyticsPrompt = () => {
+  if (!analyticsPromptTimer || !analyticsConsent.hidden) return;
+  cancelAnalyticsPromptTimer();
+  writeSessionValue(analyticsPromptSuppressedKey, "true");
+};
+
+const scheduleInitialAnalyticsPrompt = () => {
+  if (readAnalyticsConsent() !== null) {
+    analyticsConsent.hidden = true;
+    return;
+  }
+
+  if (!mobileAnalyticsConsentQuery.matches) {
+    showAnalyticsConsent();
+    return;
+  }
+
+  analyticsConsent.hidden = true;
+  if (readSessionValue(analyticsPromptSuppressedKey) === "true") return;
+
+  const storedDeadline = Number(readSessionValue(analyticsPromptDeadlineKey));
+  const deadline = Number.isFinite(storedDeadline) && storedDeadline > 0
+    ? storedDeadline
+    : Date.now() + mobileAnalyticsConsentDelayMs;
+  writeSessionValue(analyticsPromptDeadlineKey, String(deadline));
+  const remainingDelay = Math.max(0, deadline - Date.now());
+  if (remainingDelay === 0) {
+    showAnalyticsConsent();
+    return;
+  }
+  analyticsPromptTimer = setTimeout(showAnalyticsConsent, remainingDelay);
+};
+
 const applyAnalyticsConsent = (choice) => {
   const analyticsStorage = choice === "granted" ? "granted" : "denied";
   window.gtag?.("consent", "update", {
@@ -35,20 +109,32 @@ const applyAnalyticsConsent = (choice) => {
   });
   window.clearPathAnalyticsConsent = choice;
   writeAnalyticsConsent(choice);
+  cancelAnalyticsPromptTimer();
+  clearSessionValue(analyticsPromptDeadlineKey);
+  clearSessionValue(analyticsPromptSuppressedKey);
   analyticsConsent.hidden = true;
 };
 
 if (analyticsConsent) {
-  analyticsConsent.hidden = readAnalyticsConsent() !== null;
+  scheduleInitialAnalyticsPrompt();
   analyticsConsent.querySelectorAll("[data-consent-choice]").forEach((button) => {
     button.addEventListener("click", () => applyAnalyticsConsent(button.dataset.consentChoice));
   });
   document.querySelectorAll("[data-open-consent]").forEach((button) => {
     button.addEventListener("click", () => {
-      analyticsConsent.hidden = false;
-      analyticsConsent.querySelector("[data-consent-choice]")?.focus();
+      showAnalyticsConsent({ focus: true });
     });
   });
+  mobileAnalyticsConsentQuery.addEventListener("change", (event) => {
+    if (!event.matches && readAnalyticsConsent() === null && analyticsConsent.hidden) {
+      showAnalyticsConsent();
+    }
+  });
+  document.addEventListener("click", (event) => {
+    if (event.target.closest('a[href^="sms:"], a[href^="tel:"], a[href$="#contact"], [data-open-estimate]')) {
+      suppressPendingAnalyticsPrompt();
+    }
+  }, { capture: true });
 }
 
 const setScrolled = () => navbar?.classList.toggle("is-scrolled", window.scrollY > 12);

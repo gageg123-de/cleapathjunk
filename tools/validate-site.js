@@ -6,6 +6,8 @@ const {
   canonicalUrl,
   clarityProjectId,
   googleAnalyticsId,
+  mobileAnalyticsConsentDelayMs,
+  mobileAnalyticsConsentMaxWidth,
 } = require("./site-config");
 const { publicRoutes } = require("./public-routes");
 
@@ -233,6 +235,12 @@ for (const file of htmlFiles) {
   if (!html.includes('id="analyticsConsent"') || !html.includes('data-open-consent')) {
     errors.push(`${rel}: missing analytics consent controls`);
   }
+  if (!html.includes(`data-mobile-delay-ms="${mobileAnalyticsConsentDelayMs}"`)) {
+    errors.push(`${rel}: missing configured mobile analytics prompt delay`);
+  }
+  if (!html.includes(`data-mobile-max-width="${mobileAnalyticsConsentMaxWidth}"`)) {
+    errors.push(`${rel}: missing configured mobile analytics breakpoint`);
+  }
   if (!html.includes('href="/privacy/"')) errors.push(`${rel}: missing crawlable privacy link`);
   if (/data-clarity-unmask/i.test(html)) errors.push(`${rel}: Clarity unmasking is prohibited`);
   const estimateFormTag = html.match(/<form\b[^>]*id="estimateForm"[^>]*>/i)?.[0];
@@ -306,9 +314,14 @@ for (const match of css.matchAll(/url\(["']?([^"')]+)["']?\)/gi)) checkTarget(cs
 
 const scriptFile = path.join(root, "script.js");
 const script = fs.readFileSync(scriptFile, "utf8");
+if (mobileAnalyticsConsentDelayMs !== 10000) errors.push("site-config.js: mobile analytics consent delay must remain 10,000 ms");
+if (mobileAnalyticsConsentMaxWidth !== 699) errors.push("site-config.js: mobile analytics breakpoint must align with the existing 700px desktop breakpoint");
 if (!script.includes('gtag?.("consent", "update"')) errors.push("script.js: missing consent update behavior");
 if (!script.includes('analytics_storage: analyticsStorage')) errors.push("script.js: analytics consent choice is not passed to Google Consent Mode");
 if (!script.includes('clarity?.("consentv2"')) errors.push("script.js: analytics consent choice is not passed to Clarity Consent V2");
+if (!script.includes("sessionStorage") || !script.includes("analyticsPromptDeadlineKey")) errors.push("script.js: mobile analytics prompt deadline must persist for the browser session");
+if (!script.includes("suppressPendingAnalyticsPrompt")) errors.push("script.js: quote CTA interactions must suppress the pending mobile analytics prompt");
+if (!script.includes("showAnalyticsConsent({ focus: true })")) errors.push("script.js: Privacy choices must open the consent controls immediately");
 if (/clarity\s*\(\s*["'](?:identify|set)["']/i.test(script)) errors.push("script.js: Clarity identifiers or custom properties require a separate privacy review");
 
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
