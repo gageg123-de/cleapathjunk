@@ -19,6 +19,14 @@ This directory is the internal, versioned record of major Clear Path website aud
 | --- | --- | --- | --- | --- |
 | 2026-08-26 | Audited `8039c9cd6b232a37ad66ac892b6c1a99a3cedf91`; fixes committed as `9473adcdeb55fff8a498512e56de4ae1a9d60a44` | [Site-wide baseline](site-audit-2026-08-26.md) | [JSON](site-audit-2026-08-26.json) | Strong overall baseline; internal deployment exposure and duplicate-home fragment links resolved; follow-ups retained |
 
+## Lightweight follow-ups
+
+Lightweight follow-ups record material changes to baseline findings without rewriting the historical audit or creating a new site-wide audit.
+
+| Date | Scope | Record | Result |
+| --- | --- | --- | --- |
+| 2026-09-02 | Analytics consent and privacy | [Follow-up](follow-up-2026-09-02-analytics.md) | `AUD-002` resolved; `AUD-004` remains open |
+
 ## Record naming
 
 Use:
@@ -29,4 +37,3 @@ Use:
 If more than one major audit occurs on the same day, append a short stable qualifier rather than replacing the earlier files.
 
 The JSON convention is defined by [`findings.schema.json`](findings.schema.json). The reusable process and comparison protocol are in [`METHODOLOGY.md`](METHODOLOGY.md).
-
